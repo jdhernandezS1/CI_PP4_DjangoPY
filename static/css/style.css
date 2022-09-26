@@ -10,7 +10,14 @@ body {
 }
 
 .red-o {
-    color: #E84610;
+    color: #997569;
+}
+.green-o {
+    color: #08ad2c;
+}
+.blue-o{
+    color: rgb(59, 36, 229);
+
 }
 
 .thin {
