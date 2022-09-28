@@ -26,7 +26,7 @@ class Post(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
-
+   
 
 class Comment(models.Model):
     
@@ -35,7 +35,7 @@ class Comment(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
+    approved = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['created_on']
