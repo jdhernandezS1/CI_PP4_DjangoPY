@@ -8,7 +8,7 @@
                 <h1 class="post-title">
                 </h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle"> | </p>
+                <p class="post-subtitle"> {{post.title}} | By {{post.author}}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
@@ -21,19 +21,21 @@
         </div>
     </div>
 </div>
-
+<hr>
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
+                <span class="card-text "> {{post.content}} </span>
+
                 <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text "></p>
                 <div class="row">
 
                     <div class="col-1">
                         <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> </strong>
+                        <strong class="text-secondary"><i class="far fa-heart"></i> {{post.number_of_likes}}</strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
@@ -73,9 +75,22 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col-md-12 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- For later -->
+                <!-- <h3 class="col-md-12 mt-1 offset-md-1">Comment</h3> -->
+                <div class="col-md-8 mt-5 offset-md-3">
+                
+                    <form method="POST" >
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div>
+                            <p>
+                                <button type="submit" class="btn btn-default">Send</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
