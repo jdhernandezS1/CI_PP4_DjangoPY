@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
+{% load crispy_forms_tags %}
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -27,7 +27,7 @@
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
-                <span class="card-text "> {{post.content}} </span>
+                <span class="card-text "> {{ post.content | safe }} </span>
 
                 <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text "></p>
@@ -78,19 +78,16 @@
         <div class="col-md-12 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- For later -->
-                <!-- <h3 class="col-md-12 mt-1 offset-md-1">Comment</h3> -->
-                <div class="col-md-8 mt-5 offset-md-3">
-                
-                    <form method="POST" >
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <div>
-                            <p>
-                                <button type="submit" class="btn btn-default">Send</button>
-                            </p>
-                        </div>
-                    </form>
-                </div>
+                {% if user.is_authenticated %}
+
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% endif %}
             </div>
         </div>
     </div>
