@@ -26,7 +26,8 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><span class="text-primary">V<span class="text-success">e</span>gg Di<span class="text-success">e</span>t</span>|<span
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><span class="text-primary">V<span
+                            class="text-success">e</span>gg Di<span class="text-success">e</span>t</span>|<span
                         class="thin text-danger">Planer</span></span></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,12 +58,27 @@
                     {% endif %}
                 </ul>
                 {% if user.is_authenticated %}
-                    <p>Hello {{user}}</p>
+                <p>Hello {{user}}</p>
                 {% endif %}
 
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
