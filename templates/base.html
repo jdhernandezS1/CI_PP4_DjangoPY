@@ -46,15 +46,15 @@
                     <li class="nav-item hvr-bounce-out ">
                         <a class="nav-link bg-success bg-gradient" href="{% url 'account_logout' %}">Logout</a>
                     </li>
-                    <li class="nav-item hvr-bounce-out ">
-                        <a class="nav-link bg-gradient" href="/">My Plan</a>
+                    <li class="nav-item hvr-bounce-out bg-gradient">
+                        <a class="nav-link " href="/">My Plan</a>
                     </li>
                     {% else %}
-                    <li class="nav-item hvr-bounce-out ">
-                        <a class="nav-link bg-gradient" href="{% url 'account_signup' %}">Register</a>
+                    <li class="nav-item hvr-bounce-out bg-gradient">
+                        <a class="nav-link " href="{% url 'account_signup' %}">Register</a>
                     </li>
-                    <li class="nav-item hvr-bounce-out ">
-                        <a class="nav-link bg-gradient" href="{% url 'account_login' %}">Login</a>
+                    <li class="nav-item hvr-bounce-out bg-gradient">
+                        <a class="nav-link " href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
