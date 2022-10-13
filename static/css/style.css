@@ -90,7 +90,9 @@ body {
     text-decoration: none;
     color: #445261;
 }
-
+.gallery{
+    padding: 2rem;
+}
 .post-link:hover,
 .page-link {
     color: #E84610;
@@ -140,3 +142,20 @@ body {
     background: transparent;
     border: none;
 }
+
+/* Hover classes */
+.hvr-bounce-out,
+.hvr-buzz{
+    background-color: rgba(0, 128, 0, 0.158);
+}
+
+.hvr-pulse-grow{}
+
+
+
+
+
+
+
+
+
