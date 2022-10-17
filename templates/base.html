@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid bg-light text-center">
-            <a class="navbar-brand hvr-pulse-grow" href="{% url 'home' %}"><span class="brand"><span class="text-primary">V<span
+            <a class="navbar-brand hvr-float-shadow" href="{% url 'home' %}"><span class="brand"><span class="text-primary">V<span
                             class="text-success">e</span>gg Di<span class="text-success">e</span>t</span> <span class="small text-danger"><ion-icon name="heart-outline"></ion-icon></span><span
                         class="thin text-danger blockquote">Planer</span></span></span></a>
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -39,27 +39,27 @@
                     <!-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li> -->
-                    <li class="nav-item hvr-buzz  ">
+                    <li class="nav-item hvr-float-shadow">
                         <a class="nav-link bg-success bg-light" href="{% url 'posts' %}">Foro</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item hvr-bounce-out ">
-                        <a class="nav-link bg-success bg-light" href="{% url 'account_logout' %}">Logout</a>
-                    </li>
-                    <li class="nav-item hvr-bounce-out bg-light">
+                    <li class="nav-item hvr-float-shadow ">
                         <a class="nav-link bg-success bg-light" href="/">My Plan</a>
                     </li>
+                    <li class="nav-item hvr-float-shadow bg-light">
+                        <a class="nav-link bg-success bg-light" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
                     {% else %}
-                    <li class="nav-item hvr-bounce-out">
+                    <li class="nav-item hvr-float-shadow">
                         <a class="nav-link bg-success bg-light" href="{% url 'account_signup' %}">Register</a>
                     </li>
-                    <li class="nav-item hvr-bounce-out">
+                    <li class="nav-item hvr-float-shadow">
                         <a class="nav-link bg-success bg-light" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
                 {% if user.is_authenticated %}
-                <p>Hello {{user}}</p>
+                <p class="thin text-info">Hello {{user}}</p>
                 {% endif %}
 
             </div>
