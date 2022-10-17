@@ -12,7 +12,9 @@ body {
 .red-o {
     color: #E84610;
 }
-
+.requiredField{
+    visibility: hidden;
+}
 .thin {
     font-weight: 300;
 }
