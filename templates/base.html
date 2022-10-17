@@ -21,15 +21,15 @@
 
 </head>
 
-<body class="d-flex flex-column h-100 main-bg">
+<body class="d-flex flex-column h-100 main-bg bg-light">
 
     <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
+        <div class="container-fluid bg-light text-center">
             <a class="navbar-brand hvr-pulse-grow" href="{% url 'home' %}"><span class="brand"><span class="text-primary">V<span
-                            class="text-success">e</span>gg Di<span class="text-success">e</span>t</span>|<span
-                        class="thin text-danger">Planer</span></span></span></a>
+                            class="text-success">e</span>gg Di<span class="text-success">e</span>t</span> <span class="small text-danger"><ion-icon name="heart-outline"></ion-icon></span><span
+                        class="thin text-danger blockquote">Planer</span></span></span></a>
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,21 +40,21 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li> -->
                     <li class="nav-item hvr-buzz  ">
-                        <a class="nav-link bg-success bg-gradient" href="{% url 'posts' %}">Foro</a>
+                        <a class="nav-link bg-success bg-light" href="{% url 'posts' %}">Foro</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item hvr-bounce-out ">
-                        <a class="nav-link bg-success bg-gradient" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link bg-success bg-light" href="{% url 'account_logout' %}">Logout</a>
                     </li>
-                    <li class="nav-item hvr-bounce-out bg-gradient">
-                        <a class="nav-link bg-success bg-gradient" href="/">My Plan</a>
+                    <li class="nav-item hvr-bounce-out bg-light">
+                        <a class="nav-link bg-success bg-light" href="/">My Plan</a>
                     </li>
                     {% else %}
                     <li class="nav-item hvr-bounce-out">
-                        <a class="nav-link bg-success bg-gradient" href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link bg-success bg-light" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item hvr-bounce-out">
-                        <a class="nav-link bg-success bg-gradient" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link bg-success bg-light" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -95,6 +95,7 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
