@@ -11,10 +11,10 @@ class Week(models.Model):
     """
     A class for the weekly meals
     """
-
+    weeknumber = models.ForeignKey(User, on_delete=models.CASCADE, related_name="week")
+    status = models.IntegerField(choices=STATUS, default=0)
     title = models.CharField(max_length=15, unique=True)
     period = models.DateTimeField()
-    weeknumber = models.ForeignKey(User, on_delete=models.CASCADE, related_name="week")
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     featured_image = CloudinaryField('image', default='placeholder')
