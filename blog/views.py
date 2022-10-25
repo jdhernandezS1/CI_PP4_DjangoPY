@@ -5,18 +5,26 @@ from .models import Post
 from .forms import *
 
 class index(generic.ListView):
+    """
+    A class for the main page "index"
+    """
     model = Post
     template_name = 'index.html'
     paginate_by = 6
 
 class PostList(generic.ListView):
+    """
+    A class for the Blog Post ordered by "created on"
+    """
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'posts.html'
     paginate_by = 6
 
 class PostDetail(View):
-    
+    """
+    A class for the Post details ordered by "created on"
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -36,7 +44,7 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-
+        
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
@@ -68,7 +76,9 @@ class PostDetail(View):
 
 
 class PostLike(View):
-    
+    """
+    A class for likes
+    """
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
