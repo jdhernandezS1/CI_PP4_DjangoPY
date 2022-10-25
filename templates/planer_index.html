@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-3">Wellcome to the Diet Planer </h1>
+              <!-- <p class="lead">Text.</p> -->
+            </div>
+          </div>
+        <hr>
+        <!-- Posts Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                <!-- Posts Lists -->
+                {% for week in week_List %}
+                <div class="col-md-2">
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="image-container">
+                                {% if "placeholder" in week.featured_image.url %}
+                                <img class="card-img-top"
+                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
+                                {% else %}
+                                <img class="card-img-top" src=" {{ week.featured_image.url }}">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Title: {{ week.title }}</p>
+                                </div>
+                            </div>
+                            <a href="{% url 'week_detail' week.title %}" class="week-link hvr-float-shadow rounded bg-light text-dark">
+                                <h2 class="card-title">{{ week.title }}</h2>
+                                <!-- <p class="card-text">{{ week.excerpt }}</p> -->
+                            </a>
+                            <hr />
+                            <p class="card-text text-muted h6">{{ week.created_on}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{%endblock%}
