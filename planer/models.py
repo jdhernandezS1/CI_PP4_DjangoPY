@@ -5,7 +5,22 @@ from cloudinary.models import CloudinaryField
 
 
 STATUS = ((0, "DRAFT"), (1, "Published"))
-
+monday = 1
+tuesday = 2
+wednesday = 3
+thursday = 4
+friday = 5
+saturday = 6
+sunday = 7
+DAYS_CHOICES = (
+    (monday, 'monday'),
+    (tuesday, 'tuesday'),
+    (wednesday, 'wednesday'),
+    (thursday, 'thursday'),
+    (friday, 'friday'),
+    (saturday, 'saturday'),
+    (sunday, 'sunday'),
+)
 
 class Week(models.Model):
     """
@@ -30,9 +45,9 @@ class Day(models.Model):
     """
     A class for the daily meals
     """
-
+    week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='day', default=0)
     day_name = models.CharField(max_length=9, unique=True)
-    day_number = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='day')
+    day_number = models.IntegerField(choices=DAYS_CHOICES, default=0)
     phrase = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     featured_image = CloudinaryField('image', default='placeholder')

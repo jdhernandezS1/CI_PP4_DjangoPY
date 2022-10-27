@@ -4,7 +4,7 @@ from django.urls import path
 
 urlpatterns = [
     path('planer/', views.planer_index.as_view(), name='planer'),
-    # path('posts/', views.PostList.as_view(), name='posts'),
-    # path('posts/<slug:slug>/', views.PostDetail.as_view(), name="post_detail"),
-    # path('posts/<slug:slug>/like', views.PostLike.as_view(), name="post_like"),
+    # path('planer/week/', views.WeekList.as_view(), name='week_list'),
+    # path('planer/day/', views.WeekDetail.as_view(), name="days_list"),
+    # path('planer/meals/', views.Meals.as_view(), name="meals_list"),
 ]
