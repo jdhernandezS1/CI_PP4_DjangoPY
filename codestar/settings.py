@@ -14,8 +14,12 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 import os
 import dj_database_url
+
+
+debug = False
 if os.path.isfile('env.py'):
     import env
+    debug = os.environ.get('FLAG')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -27,11 +31,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = debug
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['djangoapp4.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['djangoapp4.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
