@@ -27,10 +27,10 @@
                                 <img class="card-img-top" src=" {{ week.featured_image.url }}">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="author">Title: {{ week.title }}</p>
+                                    <p class="author">Week: {{ week.title }}</p>
                                 </div>
                             </div>
-                            <a href="{% url 'week_detail' week.title %}" class="week-link hvr-float-shadow rounded bg-light text-dark">
+                            <a href="{% url 'week_list' week.title %}" class="week-link hvr-float-shadow rounded bg-light text-dark">
                                 <h2 class="card-title">{{ week.title }}</h2>
                                 <!-- <p class="card-text">{{ week.excerpt }}</p> -->
                             </a>
