@@ -14,7 +14,7 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 import os
 import dj_database_url
-
+server = 'djangoapp4.herokuapp.com'
 
 debug = False
 if os.path.isfile('env.py'):
@@ -32,10 +32,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = debug
+# DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['djangoapp4.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [server, '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -156,9 +157,9 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
 MEDIA_URL = '/media/'
+
+# Cloudinary server
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
