@@ -12,6 +12,15 @@ class index(generic.ListView):
     template_name = 'index.html'
     paginate_by = 6
 
+class page_not_found(generic.ListView):
+    """
+    Page not found Error 404
+    """    
+    model = Post
+    # response.status_code = 404
+    template_name = '404.html'
+    paginate_by = 6
+
 class PostList(generic.ListView):
     """
     A class for the Blog Post ordered by "created on"
