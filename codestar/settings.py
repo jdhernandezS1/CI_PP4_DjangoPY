@@ -14,9 +14,11 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 import os
 import dj_database_url
-server = 'djangoapp4.herokuapp.com'
 
+# parameters
+server = 'djangoapp4.herokuapp.com'
 debug = False
+
 if os.path.isfile('env.py'):
     import env
     debug = os.environ.get('FLAG')
