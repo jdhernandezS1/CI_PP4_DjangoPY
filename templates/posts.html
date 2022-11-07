@@ -6,10 +6,10 @@
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-              <h1 class="display-3">Veggetarians community </h1>
-              <p class="lead">Feel free to share your experience or comment with the politics of respect.</p>
+                <h1 class="display-3">Veggetarians community </h1>
+                <p class="lead">Feel free to share your experience or comment with the politics of respect.</p>
             </div>
-          </div>
+        </div>
         <hr>
         <!-- Posts Entries Column -->
         <div class="col-12 mt-3 left">
@@ -30,7 +30,8 @@
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
-                            <a href="{% url 'post_detail' post.slug %}" class="post-link hvr-float-shadow rounded bg-light text-dark">
+                            <a href="{% url 'post_detail' post.slug %}"
+                                class="post-link hvr-float-shadow rounded bg-light text-dark">
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
