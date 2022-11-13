@@ -12,7 +12,7 @@ class PlanerList(generic.ListView):
     queryset = Week.objects.order_by('-created_on')
     template_name = 'planer_index.html'
     paginate_by = 6
-    context = {'flag' : '0',} 
+    
     
 
 class WeekList(generic.ListView):
