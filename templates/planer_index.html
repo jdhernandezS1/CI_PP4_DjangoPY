@@ -12,44 +12,45 @@
         </div>
         <hr>
     </div>
-</div>
-</div>
-<!-- weeks Column -->
-<div class="col-12 mt-3 left">
-    <div class="row">
-        <!-- weeks Lists -->
 
-        <!-- flag -->
+    <!-- weeks Column -->
+    <div class="col-12 mt-3 left">
+        <div class="row">
+            <!-- weeks Lists -->
 
+            <!-- flag -->
 
-        {% for week in week_list %}
-        <!-- week list for -->
-        {% if week_list %}
+            {% for week in week_list %}
+            <!-- week list for -->
+            {% if week_list %}
 
-        {% if week.weeknumber == user %}
-        <div class="col-md-2">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <div class="image-container">
-                        {% if "placeholder" in week.featured_image.url %}
-                        <img class="card-img-top" src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
-                        {% else %}
-                        <img class="card-img-top" src=" {{ week.featured_image.url }}">
-                        {% endif %}
-                        <div class="image-flash">
-                            <p class="author">Week: {{ week.title }}</p>
+            {% if week.weeknumber == user %}
+            <div class="col-md-2">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="image-container">
+                            {% if "placeholder" in week.featured_image.url %}
+                            <img class="card-img-top"
+                                src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
+                            {% else %}
+                            <img class="card-img-top" src=" {{ week.featured_image.url }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <p class="author">Week: {{ week.title }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {% else %}
+            {% endif %}
+            {% endif %}
+
+            <!-- for of week list -->
+            {% endfor %}
+
+            <h2>Create New plan <a href="{% url 'planer' %}"> <ion-icon name="add-circle-outline"></ion-icon></a></h2>
         </div>
-        {% else %}
-        {% endif %}
-        {% endif %}
-
-        <!-- for of week list -->
-        {% endfor %}
-
-        <h1 id="create_planer">no weeks : {{flag}} </h1>
-
-        {%endblock%}
+    </div>
+</div>
+{%endblock%}
