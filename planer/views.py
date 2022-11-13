@@ -1,7 +1,7 @@
 from django.shortcuts import render,  get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Week
+from .models import *
 from .forms import *
 
 class PlanerList(generic.ListView):
@@ -13,7 +13,14 @@ class PlanerList(generic.ListView):
     template_name = 'planer_index.html'
     paginate_by = 6
     
-    
+class PlanerDaily(generic.ListView):
+    """
+    A class for the main page "planer index"
+    """
+    model = Day
+    queryset = Day.objects.order_by('-created_on')
+    template_name = 'planer_day.html'
+    paginate_by = 6
 
 class WeekList(generic.ListView):
     """

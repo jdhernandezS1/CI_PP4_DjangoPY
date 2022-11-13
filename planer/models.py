@@ -45,9 +45,9 @@ class Day(models.Model):
     """
     A class for the daily meals
     """
-    week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='day', default=0)
-    day_name = models.CharField(max_length=9, unique=True)
-    day_number = models.IntegerField(choices=DAYS_CHOICES, default=0)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='day', default=0)
+    day_number = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='day', default=0)
+    day_name = models.IntegerField(choices=DAYS_CHOICES, default=0)
     phrase = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     featured_image = CloudinaryField('image', default='placeholder')

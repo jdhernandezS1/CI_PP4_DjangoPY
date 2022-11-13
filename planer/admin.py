@@ -19,10 +19,10 @@ class DayAdmin(admin.ModelAdmin):
     """
     A class for the daily section
     """
-    list_display = ('day_number', 'created_on')
+    list_display = ('day_name', 'created_on')
     list_filter = ('day_name', 'created_on')
     search_fields = ('day_name', 'day_number')
-    
+
 
 @admin.register(Meal)
 class MealAdmin(admin.ModelAdmin):
