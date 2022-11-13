@@ -19,11 +19,10 @@
             <!-- days Lists -->
 
             <!-- flag -->
-<p>day {{day}}</p>
-            {% for day in list %}
-            <h1>day list</h1>
+            {% for day in day_list %}
+            <h1>day list{{day.day_name}}</h1>
             <!-- list for -->
-            {% if list %}
+            {% if day_list %}
             <div class="col-md-2">
                 <div class="card mb-2">
                     <div class="card-body">
@@ -32,10 +31,10 @@
                             <img class="card-img-top"
                                 src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
                             {% else %}
-                            <img class="card-img-top" src=" {{ week.featured_image.url }}">
+                            <img class="card-img-top" src=" {{ day.featured_image.url }}">
                             {% endif %}
                             <div class="image-flash">
-                                <p class="author">Week: {{ day.title }}</p>
+                                <p class="author">day: {{ day.day_name }}</p>
                             </div>
                         </div>
                     </div>
