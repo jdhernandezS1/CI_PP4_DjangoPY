@@ -11,8 +11,15 @@ body {
 .bg-orange{
     background-color: #ff8125;
 }
+.bg-blue{
+    background-color: #00b0c7;
+}
+
+.text-orange{
+    color: #ff8125;
+}
 .text-blue{
-    color:  #00b0c7;
+    color: #00b0c7;
 }
 .red-o {
     color: #E84610;
