@@ -8,7 +8,12 @@ body {
     font-weight: 700;
     color: #4A4A4F;
 }
-
+.bg-orange{
+    background-color: #ff8125;
+}
+.text-blue{
+    color:  #00b0c7;
+}
 .red-o {
     color: #E84610;
 }
