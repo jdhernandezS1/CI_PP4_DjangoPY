@@ -6,7 +6,7 @@
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-3">Wellcome to the Diet Planer </h1>
+                <h1 class="display-3">Wellcome to the Planer </h1>
                 <!-- <p class="lead">Text.</p> -->
             </div>
         </div>
@@ -28,17 +28,24 @@
             <div class="col-md-2">
                 <div class="card mb-2">
                     <div class="card-body">
-                        <div class="image-container">
-                            {% if "placeholder" in week.featured_image.url %}
-                            <img class="card-img-top"
-                                src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
-                            {% else %}
-                            <img class="card-img-top" src=" {{ week.featured_image.url }}">
-                            {% endif %}
-                            <div class="image-flash">
-                                <p class="author">Week: {{ week.title }}</p>
+                        <a href="{% url 'planer_day' %}"
+                            class="post-link hvr-float-shadow rounded bg-light text-dark">
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text">{{ post.excerpt }}</p>
+                            <div class="image-container">
+                                {% if "placeholder" in week.featured_image.url %}
+                                <img class="card-img-top"
+                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
+                                {% else %}
+                                <img class="card-img-top" src=" {{ week.featured_image.url }}">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author"> Diet {{ week.title }}</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
+                        <p> Week start: {{week.period |date:"SHORT_DATE_FORMAT" }}</p>
                     </div>
                 </div>
             </div>
@@ -49,7 +56,9 @@
             <!-- for of week list -->
             {% endfor %}
 
-            <h2>Create New plan <a href="{% url 'planer' %}"> <ion-icon name="add-circle-outline"></ion-icon></a></h2>
+            <h2>Create New plan <a href="{% url 'planer_day' %}">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </a></h2>
         </div>
     </div>
 </div>
