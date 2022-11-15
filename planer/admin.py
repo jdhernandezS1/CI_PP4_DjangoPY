@@ -12,7 +12,8 @@ class WeekAdmin(SummernoteModelAdmin):
     list_display = ('title', 'weeknumber', 'created_on')
     search_fields = ['title', 'weeknumber']
     list_filter = ('title', 'created_on')
-    
+    prepopulated_fields = {'slug': ('title',)}
+
 
 @admin.register(Day)
 class DayAdmin(admin.ModelAdmin):
@@ -32,3 +33,4 @@ class MealAdmin(admin.ModelAdmin):
     list_display = ('meal', 'meal_number', 'meal_name', 'created_on')
     list_filter = ('meal_number', 'meal_name', 'created_on')
     search_fields = ('meal_number', 'meal_name')
+    prepopulated_fields = {'slug': ('meal_name',)}
