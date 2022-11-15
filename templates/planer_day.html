@@ -18,10 +18,10 @@
         <div class="row">
             <!-- days Lists -->
 
-            <h2>Day list</h2>
-            {% for day in day_list %}
+            <!-- <h2>Day list </h2> -->
+            {% for day in days %}
             <!-- list for -->
-            {% if day_list %}
+            {% if days %}
             <div class="col-md-2">
                 <div class="card mb-2">
                     <div class="card-body">
@@ -32,9 +32,36 @@
                             {% else %}
                             <img class="card-img-top" src=" {{ day.featured_image.url }}">
                             {% endif %}
+                            {% if day.day_name == 1 %}
                             <div class="image-flash">
-                                <p class="author">day: {{ day.day_name }}</p>
+                                <p class="author">Monday</p>
                             </div>
+                            {% elif day.day_name == 2 %}
+                            <div class="image-flash">
+                                <p class="author">Tuesday</p>
+                            </div>
+                            {% elif day.day_name == 3 %}
+                            <div class="image-flash">
+                                <p class="author">Wednesday</p>
+                            </div>
+                            {% elif day.day_name == 4 %}
+                            <div class="image-flash">
+                                <p class="author">Thursday</p>
+                            </div>
+                            {% elif day.day_name == 5 %}
+                            <div class="image-flash">
+                                <p class="author">Friday</p>
+                            </div>
+                            {% elif day.day_name == 6 %}
+                            <div class="image-flash">
+                                <p class="author">Saturday</p>
+                            </div>
+                            {% elif day.day_name == 7 %}
+                            <div class="image-flash">
+                                <p class="author">Sunday</p>
+                            </div>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
