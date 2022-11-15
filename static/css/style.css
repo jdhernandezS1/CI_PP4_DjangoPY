@@ -14,7 +14,9 @@ body {
 .bg-blue{
     background-color: #00b0c7;
 }
-
+.link-nonline{
+    text-decoration: none;
+}
 .text-orange{
     color: #ff8125;
 }
