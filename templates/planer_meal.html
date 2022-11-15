@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3">Daily planer </h1>
+                <!-- <p class="lead">Text.</p> -->
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <!-- weeks Column -->
+    <div class="col-12 mt-3 left">
+        <div class="row">
+            <!-- days Lists -->
+
+            <h2>Day list</h2>
+            {% for day in day_list %}
+            <!-- list for -->
+            {% if day_list %}
+            <div class="col-md-2">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="image-container">
+                            {% if "placeholder" in day.featured_image.url %}
+                            <img class="card-img-top"
+                                src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
+                            {% else %}
+                            <img class="card-img-top" src=" {{ day.featured_image.url }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <p class="author">day: {{ day.day_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- for of week list -->
+            {% endfor %}
+
+            <h2>Create New plan <a href="{% url 'planer' %}"> <ion-icon name="add-circle-outline"></ion-icon></a></h2>
+        </div>
+    </div>
+</div>
+{%endblock%}
