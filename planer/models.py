@@ -21,7 +21,15 @@ DAYS_CHOICES = (
     (saturday, 'saturday'),
     (sunday, 'sunday'),
 )
+breakfast = 1
+lunch = 2
+dinner = 3
 
+MEAL_CHOICES = (
+    (breakfast, 'breakfast'),
+    (lunch, 'lunch'),
+    (dinner, 'dinner'),
+)
 class Week(models.Model):
     """
     A class for the weekly meals
@@ -29,6 +37,7 @@ class Week(models.Model):
     weeknumber = models.ForeignKey(User, on_delete=models.CASCADE, related_name="week")
     status = models.IntegerField(choices=STATUS, default=0)
     title = models.CharField(max_length=15, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
     period = models.DateTimeField()
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -46,24 +55,24 @@ class Day(models.Model):
     A class for the daily meals
     """
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='day', default=0)
-    day_number = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='day', default=0)
+    week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='day', default=0)
     day_name = models.IntegerField(choices=DAYS_CHOICES, default=0)
     phrase = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     featured_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
-        ordering = ['day_number', 'created_on']
+        ordering = ['week_owner', 'created_on']
 
 
 class Meal(models.Model):
     """
     A class for the individual meals
     """
-
     meal = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='meal')
-    meal_number = models.DecimalField(decimal_places=0,max_digits=1, unique=True)
+    meal_number = models.IntegerField(choices=MEAL_CHOICES, default=0)
     meal_name = models.CharField(max_length=30)
+    slug = models.SlugField(max_length=200, unique=True)
     meal_description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
