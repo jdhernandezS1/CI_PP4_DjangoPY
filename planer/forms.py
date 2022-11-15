@@ -1,8 +1,8 @@
 from django import forms
-from .models import Day
+from .models import Meal
 
 
-# class CommentForm(forms.ModelForm):
+# class MealForm(forms.ModelForm):
 #     class Meta:
-#         model = Comment
-#         fields = ('body',)
+#         model = Meal
+#         fields = ('Meal',)
