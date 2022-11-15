@@ -28,19 +28,22 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-orange">
+    <nav class="navbar navbar-expand-lg navbar-light bg-blue">
         <div class="container-fluid bg-blue text-center">
-            <a class="navbar-brand hvr-float-shadow" href="{% url 'home' %}"><span class="brand"><span
-                        class="text-blue">V<span class="text-success">e</span>gg Di<span
-                            class="text-success">e</span>t</span> <span class="small text-danger">
-                        <ion-icon name="heart-outline"></ion-icon>
-                    </span><span class="thin text-danger blockquote">Planer</span></span></span></a>
+            <a class="navbar-brand hvr-float-shadow" href="{% url 'home' %}">
+                <span class="brand">
+                    <span class="text-light">V<span class="text-success">eget</span>arian
+                        Commu<span class="text-success">nit</span>y
+                    </span>
+                </span>
+                </span>
+            </a>
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse text-center" id="navbarText">
+                <ul class="navbar-nav justify-content-center me-auto mb-2 mb-lg-0">
                     <!-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li> -->
@@ -51,9 +54,8 @@
                     <li class="nav-item hvr-float-shadow ">
                         <a class="nav-link bg-blue" href="{% url 'planer' %}">My Plan</a>
                     </li>
-                    <li class="nav-item hvr-float-shadow bg-light">
-                        <a class="nav-link bg-blue "href="{% url 'account_logout' %}">Logout</a>
-                    </li>
+                    <!-- <li class="nav-item hvr-float-shadow bg-light">
+                    </li> -->
                     {% else %}
                     <li class="nav-item hvr-float-shadow">
                         <a class="nav-link bg-blue" href="{% url 'account_signup' %}">Register</a>
@@ -64,7 +66,22 @@
                     {% endif %}
                 </ul>
                 {% if user.is_authenticated %}
-                <p class="thin text-blue">Hello {{user}}</p>
+
+                <ul class="navbar-nav justify-content-center mb-2 mb-lg-0">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                            </li>
+                            <li><a class="dropdown-item p-0  nav-link text-dark"
+                                    href="{% url 'account_logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="thin text-dark">Hello {{user}}</p>
                 {% endif %}
 
             </div>
@@ -96,16 +113,23 @@
     <footer class="footer mt-auto py-3 bg-dark ">
         <p class="m-0 text-center text-white"> Vegetarians live longer to love longer. </p>
         <p class="m-0 text-center text-white"> Our network:
-            <a href="https://www.instagram.com/epick_x/" class="text-light" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
-            <a href="https://www.linkedin.com/in/david-hern%C3%A1ndez-b3764b171/" class="text-light" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
-            <a href="https://github.com/jdhernandezS1" class="text-light" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+            <a href="https://www.instagram.com/epick_x/" class="link-nonline text-blue " target="_blank">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="https://www.linkedin.com/in/david-hern%C3%A1ndez-b3764b171/" class="link-nonline text-blue"
+                target="_blank">
+                <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+            <a href="https://github.com/jdhernandezS1/Portafolio" class="link-nonline text-blue" target="_blank">
+                <ion-icon name="logo-github"></ion-icon>
+            </a>
 
         </p>
     </footer>
     <script src="{% static 'script/script.js' %}"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
+
 </body>
 
 </html>
