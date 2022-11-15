@@ -20,15 +20,17 @@ class PlanerDaily(generic.ListView):
     # model = Day
     # queryset = Day.objects.order_by('-created_on')
     # template_name = 'planer_day.html'
-    def get(self, request, title, *args, **kwargs):
+    def get(self, request, slug, *args, **kwargs):
         queryset = Week.objects.filter(status=1)
-        week = get_object_or_404(queryset, title=title)
-
+        week = get_object_or_404(queryset, slug=slug)
+        days = week.day.order_by('day_name')
         return render(
             request,
             "planer_day.html",
             {
-                "title": title
+                "week": week,
+                "days": days,
+                "slug": slug
             },
         )
 
