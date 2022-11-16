@@ -23,6 +23,8 @@ class DayAdmin(admin.ModelAdmin):
     list_display = ('day_name', 'created_on')
     list_filter = ('day_name', 'created_on')
     search_fields = ('day_name', 'day_number')
+    prepopulated_fields = {'slugday': ('day_title',)}
+
 
 
 @admin.register(Meal)
@@ -33,4 +35,4 @@ class MealAdmin(admin.ModelAdmin):
     list_display = ('meal', 'meal_number', 'meal_name', 'created_on')
     list_filter = ('meal_number', 'meal_name', 'created_on')
     search_fields = ('meal_number', 'meal_name')
-    prepopulated_fields = {'slug': ('meal_name',)}
+    prepopulated_fields = {'slugmeal': ('meal_name',)}
