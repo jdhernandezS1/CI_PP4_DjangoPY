@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="container-fluid">
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-3">Day: {{slug}} </h1>
+                <h1 class="display-3 text-orange text-capitalize">{{slug}} </h1>
                 <!-- <p class="lead">Text.</p> -->
             </div>
         </div>
@@ -18,17 +19,31 @@
             {% for meals in meal %}
             <!-- list for -->
             {% if meals %}
-            <div class="col-md-8">
-                <div class="card mb-2">
+            {{meals.meal_form}}
+            <div class="col-md-12">
+                <div class="card mb-4">
                     <div class="card-body">
                         <div class="image-container">
-                            <div class="image-flash">
-                                <p class="author">day: {{ meal.day_name }}</p>
-                            </div>
+
+                            {% if user.is_authenticated %}
+
+                            <form method="post" class="rounded text-center">
+                                {% csrf_token %}
+                                <h3 class=" text-blue text-capitalize">{{ meals.slugmeal }}</h3>
+                                <label for="{{meals.slugmeal}}"> </label>
+                                <input id="{{meals.slugmeal}}" type="text" name="{{meals.slugmeal}}" value="{{ meals.meal_description }}">
+                                <!-- <div class="row text-center">
+                                    <div class=" col-md-5">
+                                        {{ meal_form | crispy }}
+                                    </div>
+                                </div> -->
+                                <button type="submit" class="btn-signup rounded col-2 bg-orange ">Edit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endif %}
             {% endif %}
             <!-- for of week list -->
             {% endfor %}
