@@ -30,6 +30,8 @@ MEAL_CHOICES = (
     (lunch, 'lunch'),
     (dinner, 'dinner'),
 )
+
+
 class Week(models.Model):
     """
     A class for the weekly meals
@@ -47,7 +49,7 @@ class Week(models.Model):
         ordering = ['-created_on', 'weeknumber']
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
 
 class Day(models.Model):
@@ -86,7 +88,7 @@ class Meal(models.Model):
         """
         Returns the meal string
         """
-        return self.meal_name
+        return str(self.meal_name)
 
 #// COMMANDS TIME
 #// save the act day
