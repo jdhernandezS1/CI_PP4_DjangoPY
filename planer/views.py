@@ -51,20 +51,37 @@ class Meals(generic.ListView):
             {
                 "day":day,
                 "meal": meal,
+                "edited": True,
+                "meal_form": MealForm(),                
                 "slug": slug
             },
         )
 
-    def get(self, request, slug, *args, **kwargs):
+    def post(self, request, slug, *args, **kwargs):
         queryset = Day
         day = get_object_or_404(queryset, slugday=slug)
         meal = day.meal.order_by('meal_number')
+        meal_form = MealForm(data=request.POST)
+        try:
+            if meal_form.is_valid():
+                meal_form.instance.email = request.user.email
+                meal_form.instance.name = request.user.username
+                meal_form.instance.meal_description
+                dish = meal_form.save(commit=False)
+                dish.meal = day
+                dish.save()
+            else:
+                meal_form = MealForm()
+        except:
+            print("Error")
         return render(
             request,
             "planer_meal.html",
             {
                 "day": day,
                 "meal": meal,
+                "edited": True,
+                "meal_form": meal_form,
                 "slug": slug
             },
         )
