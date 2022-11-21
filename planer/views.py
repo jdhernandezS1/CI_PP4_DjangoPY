@@ -66,6 +66,7 @@ class Meals(generic.ListView):
             if meal_form.is_valid():
                 meal_form.instance.email = request.user.email
                 meal_form.instance.name = request.user.username
+                meal_form.instance.meal_name
                 meal_form.instance.meal_description
                 dish = meal_form.save(commit=False)
                 dish.meal = day

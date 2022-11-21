@@ -56,10 +56,10 @@ class Day(models.Model):
     """
     A class for the daily meals
     """
-    day_title = models.CharField(max_length=15, unique=True)
+    week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, default=0, related_name="day")
+    day_title = models.CharField(max_length=15, unique=True) 
     slugday = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='day', default=0)
-    week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='day', default=0)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     day_name = models.IntegerField(choices=DAYS_CHOICES, default=0)
     phrase = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
