@@ -11,10 +11,10 @@
         </div>
         <hr>
     </div>
-    <!-- weeks Column -->
+    <!-- meals Column -->
     <div class="col-12 mt-3 left">
         <div class="row">
-            <!-- days Lists -->
+            <!-- meals Lists -->
             <h2>Meals list of day: {{slug | safe}}</h2>
             {% for meals in meal %}
             <!-- list for -->
@@ -41,23 +41,27 @@
             {% endif %}
             <!-- for of week list -->
             {% endfor %}
-            {% if user.is_authenticated %}
-
-            <form method="post" class="rounded text-center">
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="col-12 mt-3 left">
+        <div class="row">
+            <form method="post" class="rounded text-center col-md-2 mb-1">
                 {% csrf_token %}
                 <!-- <label for="{{meals.slugmeal}}"> </label>
                 <input id="{{meals.slugmeal}}" type="text" name="{{meals.slugmeal}}"
                     value="{{ meals.meal_description }}"> -->
                 <div class="row text-center">
-                    <div class=" col-md-5">
+                    <div class="">
+                        <h3>Add Meal</h3>
                         {{ meal_form | crispy }}
+                        <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
                     </div>
                 </div>
-                <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
             </form>
-            {% endif %}
         </div>
     </div>
+    {% endif %}
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">

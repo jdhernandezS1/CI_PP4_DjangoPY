@@ -18,19 +18,26 @@ class PlanerDaily(generic.ListView):
     """
     A class for the daily planer "planer_day.html"
     """
-    def get(self, request, slug, *args, **kwargs):
-        queryset = Week
-        week = get_object_or_404(queryset, slug=slug)
-        day = week.day.order_by('day_name')
-        return render(
-            request,
-            "planer_day.html",
-            {
-                "week": week,
-                "day": day,
-                "slug": slug
-            },
-        )
+    model = Day
+    template_name = 'planer_day.html'
+    paginate_by = 6
+# class PlanerDaily(generic.ListView):
+#     """
+#     A class for the daily planer "planer_day.html"
+#     """
+#     def get(self, request, slug, *args, **kwargs):
+#         queryset = Week
+#         week = get_object_or_404(queryset, slug=slug)
+#         day = week.day.order_by('day_name')
+#         return render(
+#             request,
+#             "planer_day.html",
+#             {
+#                 "week": week,
+#                 "day": day,
+#                 "slug": slug
+#             },
+#         )
 
 
 class Meals(generic.ListView):
