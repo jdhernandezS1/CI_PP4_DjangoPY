@@ -20,34 +20,56 @@
             <!-- list for -->
             {% if meals %}
             {{meals.meal_form}}
-            <div class="col-md-12">
-                <div class="card mb-4">
+            <div class="col-md-6">
+                <div class="card mb-3">
                     <div class="card-body">
                         <div class="image-container">
+                            <h3 class=" text-blue text-capitalize">{{ meals.slugmeal }}</h3>
+                            <div class="d-none d-md-block col-md-2 ">
+                                {% if "placeholder" in meals.featured_image.url %}
+                                <img class="border rounded-circle"
+                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" width="100%">
+                                {% else %}
+                                <img src="{{ post.featured_image.url }}" width="100%">
+                                {% endif %}
+                            </div>
 
-                            {% if user.is_authenticated %}
-
-                            <form method="post" class="rounded text-center">
-                                {% csrf_token %}
-                                <h3 class=" text-blue text-capitalize">{{ meals.slugmeal }}</h3>
-                                <label for="{{meals.slugmeal}}"> </label>
-                                <input id="{{meals.slugmeal}}" type="text" name="{{meals.slugmeal}}" value="{{ meals.meal_description }}">
-                                <!-- <div class="row text-center">
-                                    <div class=" col-md-5">
-                                        {{ meal_form | crispy }}
-                                    </div>
-                                </div> -->
-                                <button type="submit" class="btn-signup rounded col-2 bg-orange ">Edit</button>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
             {% endif %}
-            {% endif %}
             <!-- for of week list -->
             {% endfor %}
+            {% if user.is_authenticated %}
+
+            <form method="post" class="rounded text-center">
+                {% csrf_token %}
+                <!-- <label for="{{meals.slugmeal}}"> </label>
+                <input id="{{meals.slugmeal}}" type="text" name="{{meals.slugmeal}}"
+                    value="{{ meals.meal_description }}"> -->
+                <div class="row text-center">
+                    <div class=" col-md-5">
+                        {{ meal_form | crispy }}
+                    </div>
+                </div>
+                <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
+            </form>
+            {% endif %}
         </div>
     </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 {%endblock%}
