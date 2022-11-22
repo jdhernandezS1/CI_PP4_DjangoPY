@@ -1,7 +1,7 @@
 from django.shortcuts import render,  get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Week, Day
+from .models import Week, Day, Meal
 from .forms import *
 
 
@@ -20,6 +20,7 @@ class PlanerDaily(generic.ListView):
     """
     model = Day
     template_name = 'planer_day.html'
+    queryset = Day.objects.order_by('day_name')
     paginate_by = 6
 # class PlanerDaily(generic.ListView):
 #     """
@@ -48,16 +49,18 @@ class Meals(generic.ListView):
     # queryset = Meal.objects.order_by('-created_on')
     # template_name = 'planer_meal.html'
     # paginate_by = 6
-    def get(self, request, *args, **kwargs):
+    def get(self, request, slugday, *args, **kwargs):
+        # queryset = Day.objects.filter(day_name=1)
+        # day = get_object_or_404(queryset, slugday=slugday)
+        # meal = day.meals.order_by('created_on')
         queryset = Meal
-        meal = get_object_or_404(queryset)
-        meal = meal.order_by('meal_number')
+        meal= get_object_or_404(queryset)
+        # day = get_object_or_404(queryset,slugday=slugday )
+        # meals = day.meals.order_by('created_on')
         return render(
             request,
             "planer_meal.html",
-            {
-                "name": name,
-                "meal": meal,
+            {   "meal": meal,
                 "meal_form": MealForm(),                
             },
         )

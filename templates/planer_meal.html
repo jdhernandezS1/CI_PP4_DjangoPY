@@ -5,7 +5,7 @@
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-3 text-orange text-capitalize">{{slug}} </h1>
+                <h1 class="display-3 text-orange text-capitalize">slug </h1>
                 <!-- <p class="lead">Text.</p> -->
             </div>
         </div>
@@ -15,10 +15,11 @@
     <div class="col-12 mt-3 left">
         <div class="row">
             <!-- meals Lists -->
-            <h2>Meals list of day: {{slug | safe}}</h2>
-            {% for meals in meal %}
+            <h2>Meals list of day {{meals}},</h2>
+X             for meal in meals 
+            inside for
             <!-- list for -->
-            {% if meals %}
+            {% if meal %}
             {{meals.meal_form}}
             <div class="col-md-6">
                 <div class="card mb-3">
@@ -40,28 +41,10 @@
             </div>
             {% endif %}
             <!-- for of week list -->
-            {% endfor %}
+             endfor 
         </div>
     </div>
-    {% if user.is_authenticated %}
-    <div class="col-12 mt-3 left">
-        <div class="row">
-            <form method="post" class="rounded text-center col-md-2 mb-1">
-                {% csrf_token %}
-                <!-- <label for="{{meals.slugmeal}}"> </label>
-                <input id="{{meals.slugmeal}}" type="text" name="{{meals.slugmeal}}"
-                    value="{{ meals.meal_description }}"> -->
-                <div class="row text-center">
-                    <div class="">
-                        <h3>Add Meal</h3>
-                        {{ meal_form | crispy }}
-                        <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    {% endif %}
+   
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">

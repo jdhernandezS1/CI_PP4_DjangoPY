@@ -73,14 +73,15 @@ class Meal(models.Model):
     """
     A class for the individual meals
     """
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meal')
+    meal_day = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='meal')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     slugmeal = models.SlugField(max_length=30, unique=True)
     meal_description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['owner', 'slugmeal', 'created_on']
+        ordering = ['owner', 'meal_day','slugmeal', 'created_on']
 
     def __str__(self):
         """
