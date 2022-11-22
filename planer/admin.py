@@ -32,7 +32,7 @@ class MealAdmin(admin.ModelAdmin):
     """
     A class for the meals
     """
-    list_display = ('meal', 'meal_number', 'meal_name', 'created_on')
-    list_filter = ('meal_number', 'meal_name', 'created_on')
-    search_fields = ('meal_number', 'meal_name')
-    prepopulated_fields = {'slugmeal': ('meal_name',)}
+    list_display = ('owner','slugmeal', 'created_on')
+    list_filter = ('owner','slugmeal', 'created_on')
+    search_fields = ('owner', 'slugmeal')
+    

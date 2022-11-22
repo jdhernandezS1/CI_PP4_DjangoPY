@@ -57,7 +57,7 @@ class Day(models.Model):
     A class for the daily meals
     """
     week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, default=0, related_name="day")
-    day_title = models.CharField(max_length=15, unique=True) 
+    day_title = models.CharField(max_length=15, unique=True)
     slugday = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     day_name = models.IntegerField(choices=DAYS_CHOICES, default=0)
@@ -73,22 +73,20 @@ class Meal(models.Model):
     """
     A class for the individual meals
     """
-    meal = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='meal')
-    meal_number = models.IntegerField(choices=MEAL_CHOICES, default=0)
-    meal_name = models.CharField(max_length=30)
-    slugmeal = models.SlugField(max_length=200, unique=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meal')
+    slugmeal = models.SlugField(max_length=30, unique=True)
     meal_description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['meal_number', 'created_on']
-    
+        ordering = ['owner', 'slugmeal', 'created_on']
+
     def __str__(self):
         """
         Returns the meal string
         """
-        return str(self.meal_name)
+        return str(self.slugmeal)
 
 #// COMMANDS TIME
 #// save the act day

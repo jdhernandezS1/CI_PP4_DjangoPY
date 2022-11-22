@@ -19,7 +19,7 @@
                 <div class="card mb-2">
                     <div class="card-body">
                         <!-- reference to meals -->
-                        <a href="{% url 'meals_list' day.slugday %}" class="post-link hvr-float-shadow rounded bg-light text-dark">
+                        <a href="{% url 'meals_list' user%}" class="post-link hvr-float-shadow rounded bg-light text-dark">
                             <div class="image-container">
                                 {% if day.day_name == 1 %}
                                 <img class="card-img-top"
