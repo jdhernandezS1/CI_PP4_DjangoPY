@@ -1,8 +1,8 @@
-from django.shortcuts import render,  get_object_or_404, reverse
+from django.shortcuts import render, get_list_or_404, reverse, get_object_or_404
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Week, Day, Meal
-from .forms import *
+from .forms import MealForm
 
 
 class PlanerList(generic.ListView):
@@ -20,25 +20,7 @@ class PlanerDaily(generic.ListView):
     """
     model = Day
     template_name = 'planer_day.html'
-    queryset = Day.objects.order_by('day_name')
-    paginate_by = 6
-# class PlanerDaily(generic.ListView):
-#     """
-#     A class for the daily planer "planer_day.html"
-#     """
-#     def get(self, request, slug, *args, **kwargs):
-#         queryset = Week
-#         week = get_object_or_404(queryset, slug=slug)
-#         day = week.day.order_by('day_name')
-#         return render(
-#             request,
-#             "planer_day.html",
-#             {
-#                 "week": week,
-#                 "day": day,
-#                 "slug": slug
-#             },
-#         )
+    paginate_by = 7
 
 
 class Meals(generic.ListView):
@@ -50,47 +32,37 @@ class Meals(generic.ListView):
     # template_name = 'planer_meal.html'
     # paginate_by = 6
     def get(self, request, slugday, *args, **kwargs):
-        # queryset = Day.objects.filter(day_name=1)
-        # day = get_object_or_404(queryset, slugday=slugday)
-        # meal = day.meals.order_by('created_on')
-        queryset = Meal
-        meal= get_object_or_404(queryset)
-        # day = get_object_or_404(queryset,slugday=slugday )
-        # meals = day.meals.order_by('created_on')
+        meals = get_list_or_404(Meal, slugmeal="True")
+        return render(request, "planer_meal.html", {
+            "slugday": slugday,
+            "meals": meals,
+            "meal_form": MealForm()
+                },
+                )
+
+    def post(self, request, slugday, *args, **kwargs):
+
+        meals = get_list_or_404(Meal, slugmeal="True")
+
+        queryset = Day.objects
+        post = get_object_or_404(queryset, slugday=slugday)
+        meal_form = MealForm(data=request.POST)
+        if meal_form.is_valid():
+            meal_form.instance.email = request.user.email
+            meal_form.instance.name = request.user.username
+            meal_form.save()
+            dish = meal_form.save(commit=False)
+            dish.day = post
+            dish.save()
+        else:
+            meal_form = MealForm()
+
         return render(
             request,
             "planer_meal.html",
-            {   "meal": meal,
-                "meal_form": MealForm(),                
+            {
+                "slugday": slugday,
+                "meals": meals,
+                "meal_form": MealForm
             },
         )
-
-    # def post(self, request, slug, *args, **kwargs):
-    #     queryset = Day
-    #     day = get_object_or_404(queryset, slugday=slug)
-    #     meal = day.meal.order_by('meal_number')
-    #     meal_form = MealForm(data=request.POST)
-    #     try:
-    #         if meal_form.is_valid():
-    #             meal_form.instance.email = request.user.email
-    #             meal_form.instance.name = request.user.username
-    #             meal_form.instance.meal_name
-    #             meal_form.instance.meal_description
-    #             dish = meal_form.save(commit=False)
-    #             dish.meal = day
-    #             dish.save()
-    #         else:
-    #             meal_form = MealForm()
-    #     except:
-    #         print("Error")
-    #     return render(
-    #         request,
-    #         "planer_meal.html",
-    #         {
-    #             "day": day,
-    #             "meal": meal,
-    #             "edited": True,
-    #             "meal_form": meal_form,
-    #             "slug": slug
-    #         },
-    #     )

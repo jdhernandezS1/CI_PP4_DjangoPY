@@ -5,7 +5,7 @@
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-3 text-orange text-capitalize">slug </h1>
+                <h1 class="display-3 text-orange text-capitalize">{{slugday}} </h1>
                 <!-- <p class="lead">Text.</p> -->
             </div>
         </div>
@@ -15,24 +15,24 @@
     <div class="col-12 mt-3 left">
         <div class="row">
             <!-- meals Lists -->
-            <h2>Meals list of day {{meals}},</h2>
-X             for meal in meals 
-            inside for
+            <h2>Meals list</h2>
+            {% for meal in meals %}
             <!-- list for -->
-            {% if meal %}
-            {{meals.meal_form}}
+            {% if meal.owner == user %}
+            {% if meal.day == slugday %}
             <div class="col-md-6">
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="image-container">
-                            <h3 class=" text-blue text-capitalize">{{ meals.slugmeal }}</h3>
+                            <h3 class=" text-blue text-capitalize">{{ meal.title }}</h3>
                             <div class="d-none d-md-block col-md-2 ">
-                                {% if "placeholder" in meals.featured_image.url %}
+                                {% if "placeholder" in meal.featured_image.url %}
                                 <img class="border rounded-circle"
                                     src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" width="100%">
                                 {% else %}
-                                <img src="{{ post.featured_image.url }}" width="100%">
+                                <img src="{{ meal.featured_image.url }}" width="100%">
                                 {% endif %}
+                                <p>{{meal.meal_description}}</p>
                             </div>
 
                         </div>
@@ -40,11 +40,30 @@ X             for meal in meals
                 </div>
             </div>
             {% endif %}
+            {% endif %}
             <!-- for of week list -->
-             endfor 
+            {% endfor %}
+            {% if user.is_authenticated %}
+            {% if slugday == "add" %}
+            <div class="col-12 mt-3 left">
+                <div class="row">
+                    <div class="row text-center">
+                        <div class="">
+                            <h3>Add Meal</h3>
+                            <form method="post" class="rounded text-center col-md-2 mb-1">
+                                {{ meal_form | safe }}
+                                {% csrf_token %}
+                                <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
         </div>
     </div>
-   
+
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">

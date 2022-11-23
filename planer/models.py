@@ -30,7 +30,15 @@ MEAL_CHOICES = (
     (lunch, 'lunch'),
     (dinner, 'dinner'),
 )
-
+MEAL_DAY_CHOICES = (
+    ("monday", 'monday'),
+    ("tuesday", 'tuesday'),
+    ("wednesday", 'wednesday'),
+    ("thursday", 'thursday'),
+    ("friday", 'friday'),
+    ("saturday", 'saturday'),
+    ("sunday", 'sunday'),
+)
 
 class Week(models.Model):
     """
@@ -56,10 +64,9 @@ class Day(models.Model):
     """
     A class for the daily meals
     """
-    week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, default=0, related_name="day")
-    day_title = models.CharField(max_length=15, unique=True)
+    week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, default=0, related_name= "day")
+    title = models.CharField(max_length=15, unique=True)
     slugday = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
     day_name = models.IntegerField(choices=DAYS_CHOICES, default=0)
     phrase = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -73,15 +80,15 @@ class Meal(models.Model):
     """
     A class for the individual meals
     """
-    meal_day = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='meal')
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    slugmeal = models.SlugField(max_length=30, unique=True)
+    owner = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='meals')
+    day = models.CharField(choices=MEAL_DAY_CHOICES, max_length=20, default="monday")
+    title = models.CharField(max_length=20, unique=True)
+    slugmeal = models.BooleanField(default=True)
     meal_description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
-
     class Meta:
-        ordering = ['owner', 'meal_day','slugmeal', 'created_on']
+        ordering = ['owner', 'title', 'created_on']
 
     def __str__(self):
         """

@@ -20,10 +20,10 @@ class DayAdmin(admin.ModelAdmin):
     """
     A class for the daily section
     """
-    list_display = ('day_name', 'created_on')
-    list_filter = ('day_name', 'created_on')
-    search_fields = ('day_name', 'day_number')
-    prepopulated_fields = {'slugday': ('day_title',)}
+    list_display = ('title', 'day_name', 'created_on')
+    search_fields = ['title', 'day_name', 'day_number']
+    list_filter = ('title', 'day_name', 'created_on')
+    prepopulated_fields = {'slugday': ('title',)}
 
 
 
@@ -32,7 +32,6 @@ class MealAdmin(admin.ModelAdmin):
     """
     A class for the meals
     """
-    list_display = ('owner','slugmeal', 'created_on')
-    list_filter = ('owner','slugmeal', 'created_on')
-    search_fields = ('owner', 'slugmeal')
-    
+    list_display = ('owner', 'title', 'created_on')
+    list_filter = ('owner', 'title', 'created_on')
+    search_fields = ('owner', 'title')
