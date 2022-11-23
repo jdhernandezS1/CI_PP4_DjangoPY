@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import UniqueConstraint
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 # import datetime
@@ -40,6 +41,7 @@ MEAL_DAY_CHOICES = (
     ("sunday", 'sunday'),
 )
 
+
 class Week(models.Model):
     """
     A class for the weekly meals
@@ -64,7 +66,7 @@ class Day(models.Model):
     """
     A class for the daily meals
     """
-    week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, default=0, related_name= "day")
+    week_owner = models.ForeignKey(Week, on_delete=models.CASCADE, default=0, related_name="day")
     title = models.CharField(max_length=15, unique=True)
     slugday = models.SlugField(max_length=200, unique=True)
     day_name = models.IntegerField(choices=DAYS_CHOICES, default=0)
@@ -81,7 +83,7 @@ class Meal(models.Model):
     """
     A class for the individual meals
     """
-    owner = models.ForeignKey(Day, on_delete=models.CASCADE, related_name='meals')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meals')
     day = models.CharField(choices=MEAL_DAY_CHOICES, max_length=20, default="monday")
     title = models.CharField(max_length=20, unique=True)
     slugmeal = models.BooleanField(default=True)
@@ -98,8 +100,38 @@ class Meal(models.Model):
         """
         return str(self.slugmeal)
 
-#// COMMANDS TIME
-#// save the act day
-#  todays_date = datetime.date.today()
-#// get the # of the day in the week
-# day = todays_date.isoweekday()
+
+class MealPlan(models.Model):
+    """
+    Class for the MealPlan model
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meal_plan')
+    meal = models.DateField()
+
+    class Meta:
+        """
+        Internal Class to order and give contraint s
+        """
+        ordering = ['meal']
+        constraints = [UniqueConstraint(fields=['user', 'meal'], name='meal_id')]
+
+    def __str__(self):
+        """
+        Return meal
+        """
+        return (self.meal)
+
+
+class food(models.Model):
+    """
+    Class food model
+    """
+    food_name = models.CharField(max_length=10, blank=True, null=False, default=' ')
+    meal_plan = models.ForeignKey(MealPlan, on_delete=models.CASCADE, related_name='plan')
+    description = models.DateField()
+
+    def __str__(self):
+        """
+        Returns the workout name string
+        """
+        return self.food_name
