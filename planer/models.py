@@ -71,6 +71,7 @@ class Day(models.Model):
     phrase = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     featured_image = CloudinaryField('image', default='placeholder')
+    status = models.IntegerField(choices=STATUS, default=1)
 
     class Meta:
         ordering = ['week_owner', 'created_on']
@@ -87,6 +88,7 @@ class Meal(models.Model):
     meal_description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
+    
     class Meta:
         ordering = ['owner', 'title', 'created_on']
 

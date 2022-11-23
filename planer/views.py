@@ -42,18 +42,18 @@ class Meals(generic.ListView):
 
     def post(self, request, slugday, *args, **kwargs):
 
-        meals = get_list_or_404(Meal, slugmeal="True")
 
-        queryset = Day.objects
+        queryset = Day.objects.filter(status=1)
         post = get_object_or_404(queryset, slugday=slugday)
+        mils = post.meals.filter(slugmeal=True).order_by("-created_on")
         meal_form = MealForm(data=request.POST)
+        meals = get_list_or_404(Meal, slugmeal="True")
         if meal_form.is_valid():
             meal_form.instance.email = request.user.email
             meal_form.instance.name = request.user.username
-            meal_form.save()
-            dish = meal_form.save(commit=False)
-            dish.day = post
-            dish.save()
+            meal = meal_form.save(commit=False)
+            meal.post = post
+            meal.save()
         else:
             meal_form = MealForm()
 
@@ -62,6 +62,7 @@ class Meals(generic.ListView):
             "planer_meal.html",
             {
                 "slugday": slugday,
+                "mils": mils,
                 "meals": meals,
                 "meal_form": MealForm
             },
