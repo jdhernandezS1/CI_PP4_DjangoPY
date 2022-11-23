@@ -16,6 +16,7 @@
         <div class="row">
             <!-- meals Lists -->
             <h2>Meals list</h2>
+            {% if meals %}
             {% for meal in meals %}
             <!-- list for -->
             {% if meal.owner == user %}
@@ -43,6 +44,7 @@
             {% endif %}
             <!-- for of week list -->
             {% endfor %}
+            {% endif %}
             {% if user.is_authenticated %}
             {% if slugday == "add" %}
             <div class="col-12 mt-3 left">
