@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_list_or_404, reverse, get_object_or_404
+from django.shortcuts import render, get_list_or_404, reverse, get_object_or_404, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Week, Day, Meal
 from .forms import MealForm
-
 
 class PlanerList(generic.ListView):
     """
@@ -32,38 +31,43 @@ class Meals(generic.ListView):
     # template_name = 'planer_meal.html'
     # paginate_by = 6
     def get(self, request, slugday, *args, **kwargs):
-        meals = get_list_or_404(Meal, slugmeal="True")
-        return render(request, "planer_meal.html", {
+        if (get_list_or_404(Meal)):
+            meals = get_list_or_404(Meal, slugmeal="True")
+            context = {
             "slugday": slugday,
             "meals": meals,
             "meal_form": MealForm()
-                },
-                )
+                }
+        else:
+            context = {
+                "slugday": slugday,
+                "meal_form": MealForm()
+            }
+        return render(
+            request, 
+            "planer_meal.html", 
+            context,)
 
     def post(self, request, slugday, *args, **kwargs):
+        """
+        Creates a new meal
+        """
+        meal_form = MealForm(request.POST)
 
-
-        queryset = Day.objects.filter(status=1)
-        post = get_object_or_404(queryset, slugday=slugday)
-        mils = post.meals.filter(slugmeal=True).order_by("-created_on")
-        meal_form = MealForm(data=request.POST)
-        meals = get_list_or_404(Meal, slugmeal="True")
         if meal_form.is_valid():
+            user = request.user
             meal_form.instance.email = request.user.email
             meal_form.instance.name = request.user.username
-            meal = meal_form.save(commit=False)
-            meal.post = post
-            meal.save()
+            meals = meal_form.save(commit=False)
+            meals.owner = user
+            meals.save()
+            context={
+            "slugday": slugday,
+            "meals": meals,
+            "meal_form": MealForm
+            }
+
         else:
             meal_form = MealForm()
-
-        return render(
-            request,
-            "planer_meal.html",
-            {
-                "slugday": slugday,
-                "mils": mils,
-                "meals": meals,
-                "meal_form": MealForm
-            },
-        )
+            context = {'meal_form': meal_form}
+        return redirect("planer")
