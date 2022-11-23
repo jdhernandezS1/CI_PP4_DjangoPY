@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import UniqueConstraint
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 # import datetime
@@ -99,39 +98,3 @@ class Meal(models.Model):
         Returns the meal string
         """
         return str(self.slugmeal)
-
-
-class MealPlan(models.Model):
-    """
-    Class for the MealPlan model
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meal_plan')
-    meal = models.DateField()
-
-    class Meta:
-        """
-        Internal Class to order and give contraint s
-        """
-        ordering = ['meal']
-        constraints = [UniqueConstraint(fields=['user', 'meal'], name='meal_id')]
-
-    def __str__(self):
-        """
-        Return meal
-        """
-        return (self.meal)
-
-
-class food(models.Model):
-    """
-    Class food model
-    """
-    food_name = models.CharField(max_length=10, blank=True, null=False, default=' ')
-    meal_plan = models.ForeignKey(MealPlan, on_delete=models.CASCADE, related_name='plan')
-    description = models.DateField()
-
-    def __str__(self):
-        """
-        Returns the workout name string
-        """
-        return self.food_name
