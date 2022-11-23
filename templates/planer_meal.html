@@ -49,14 +49,14 @@
                 <div class="row">
                     <div class="row text-center">
                         <div class="">
-                            <h3>Add Meal</h3>
                             <form method="post" class="rounded text-center col-md-2 mb-1">
+                                <h3>Add Meal</h3>
                                 {{ meal_form | safe }}
                                 {% csrf_token %}
                                 <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
+                            </form>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
             {% endif %}
