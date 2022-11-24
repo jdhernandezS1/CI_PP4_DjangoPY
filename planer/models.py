@@ -84,7 +84,7 @@ class Meal(models.Model):
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meals')
     day = models.CharField(choices=MEAL_DAY_CHOICES, max_length=20, default="monday")
-    title = models.CharField(max_length=20, unique=True)
+    title = models.CharField(max_length=20)
     slugmeal = models.BooleanField(default=True)
     meal_description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')

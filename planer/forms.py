@@ -10,3 +10,9 @@ class MealForm(forms.ModelForm):
     class Meta:
         model = Meal
         fields = ('title', 'day', 'meal_description', 'featured_image')
+
+
+class DelMealForm(forms.ModelForm):
+    class Meta:
+        model = Meal
+        fields = ('slugmeal',)
