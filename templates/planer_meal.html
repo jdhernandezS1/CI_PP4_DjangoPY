@@ -17,33 +17,37 @@
             <!-- meals Lists -->
             <h2>Meals list</h2>
             {% if meals %}
+            <ul class="list-group">
             {% for meal in meals %}
             <!-- list for -->
             {% if meal.owner == user %}
             {% if meal.day == slugday %}
-            <div class="col-md-6">
-                <div class="card mb-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <!-- <div class="col-md-12"> -->
+                <!-- <div class="card mb-3"> -->
                     <div class="card-body">
                         <div class="image-container">
                             <h3 class=" text-blue text-capitalize">{{ meal.title }}</h3>
-                            <div class="d-none d-md-block col-md-2 ">
+                            <div class="d-none d-md-block col-md-3 ">
                                 {% if "placeholder" in meal.featured_image.url %}
                                 <img class="border rounded-circle"
                                     src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" width="100%">
                                 {% else %}
                                 <img src="{{ meal.featured_image.url }}" width="100%">
                                 {% endif %}
-                                <p>{{meal.meal_description}}</p>
                             </div>
-
+                            
                         </div>
+                        <p>{{meal.meal_description}}</p>
                     </div>
-                </div>
-            </div>
+                <!-- </div> -->
+            <!-- </div> -->
+                </li>
             {% endif %}
             {% endif %}
             <!-- for of week list -->
             {% endfor %}
+                </ul>
             {% endif %}
             {% if user.is_authenticated %}
             {% if slugday == "add" %}
