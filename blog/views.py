@@ -39,7 +39,7 @@ class PostDetail(View):
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_on')
         liked =  False
-        cotext = {
+        context = {
                 "post": post,
                 "commented": True,
                 "comments": comments,
