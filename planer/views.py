@@ -71,3 +71,16 @@ class Meals(generic.ListView):
             meal_form = MealForm()
             context = {'meal_form': meal_form}
         return redirect("planer")
+
+
+class DelMeal(generic.ListView):
+
+    def get(self, request, **kwargs):
+        """
+                """
+        return redirect("planer")
+    
+    def post(self, request, meals, *args, **kwargs):
+        meal = get_object_or_404(Meal, id=meals)
+        meal.delete()       
+        return render( request, "planer",)
