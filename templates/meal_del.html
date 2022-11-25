@@ -40,7 +40,7 @@
                             
                         </div>
                         <a href="{% url 'del_meal' meal.id%}"
-                        class="post-link hvr-float-shadow rounded bg-light text-dark" method="post">
+                        class="post-link hvr-float-shadow rounded bg-light text-dark">
                         <ion-icon name="trash-outline"></ion-icon>
                         </a>
                         <p>{{meal.meal_description}}</p>
@@ -55,14 +55,13 @@
                 </ul>
             {% endif %}
             {% if user.is_authenticated %}
-            {% if slugday == "add" %}
             <div class="col-12 mt-3 left">
                 <div class="row">
                     <div class="row text-center">
                         <div class="">
                             <form method="post" class="rounded text-center col-md-2 mb-1">
                                 <h3>Add Meal</h3>
-                                {{ meal_form | safe }}
+                                {{ DelMealForm | crispy}}
                                 {% csrf_token %}
                                 <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
                             </form>
