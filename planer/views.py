@@ -1,8 +1,17 @@
-from django.shortcuts import render, get_list_or_404, reverse, get_object_or_404, redirect
+"""
+Imports
+"""
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3rd party:
+from django.shortcuts import render, get_list_or_404, reverse
+from django.shortcuts import get_object_or_404, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+# Internal
 from .models import Week, Day, Meal
 from .forms import MealForm
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 class PlanerList(generic.ListView):
     """
@@ -26,29 +35,27 @@ class Meals(generic.ListView):
     """
     A class for the Weeks ordered by "created on"
     """
-    # model = Meal
-    # queryset = Meal.objects.order_by('-created_on')
-    # template_name = 'planer_meal.html'
-    # paginate_by = 6
     def get(self, request, slugday, *args, **kwargs):
         if (get_list_or_404(Meal)):
-            meals = get_list_or_404(Meal, slugmeal="True")
+            meals = get_list_or_404(
+                Meal,
+                slugmeal="True")
             context = {
-            "slugday": slugday,
-            "meals": meals,
-            "meal_form": MealForm()
+                "slugday": slugday,
+                "meals": meals,
+                "meal_form": MealForm()
                 }
         else:
             context = {
                 "slugday": slugday,
                 "meal_form": MealForm()
-            }
+                }
         return render(
-            request, 
-            "planer_meal.html", 
+            request,
+            "planer_meal.html",
             context,)
 
-    def post(self, request, slugday, *args, **kwargs):
+    def post(self, request, slugday):
         """
         Creates a new meal
         """
@@ -61,24 +68,39 @@ class Meals(generic.ListView):
             meals = meal_form.save(commit=False)
             meals.owner = user
             meals.save()
-            context={
-            "slugday": slugday,
-            "meals": meals,
-            "meal_form": MealForm
-            }
+            context = {
+                "slugday": slugday,
+                "meals": meals,
+                "meal_form": MealForm
+                }
 
         else:
             meal_form = MealForm()
-            context = {'meal_form': meal_form}
+            context = {
+                'meal_form': meal_form
+                }
         return redirect("planer")
 
 
 class DelMeal(generic.ListView):
+    """
+    A clas To Delete meal
+    """
     model = Meal
-    """
-    A clas To check meal
-    """
-    def post(request, self, slugday, mealid, *args, **kwargs):
+
+    def post(self, slugday, mealid):
         meal = get_object_or_404(Meal, id=mealid)
-        meal.delete()       
+        meal.delete()
         return redirect('meals_list', slugday)
+
+
+# class EdMeal(generic.ListView):
+#     """
+#     A clas To Delete meal
+#     """
+#     model = Meal
+
+#     def post(self, request, slugday, mealid, **kwargs):
+#         meal = get_object_or_404(Meal, id=mealid)
+#         meal.delete()       
+#         return redirect('meals_list', slugday)
