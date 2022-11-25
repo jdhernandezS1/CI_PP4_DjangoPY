@@ -18,18 +18,18 @@
             <h2>Meals list</h2>
             {% if meals %}
             <ul class="list-group">
-            {% for meal in meals %}
-            <!-- list for -->
-            {% if meal.owner == user %}
-            {% if meal.day == slugday %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-            <!-- <div class="col-md-12"> -->
-                <!-- <div class="card mb-3"> -->
+                {% for meal in meals %}
+                <!-- list for -->
+                {% if meal.owner == user %}
+                {% if meal.day == slugday %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <!-- <div class="col-md-12"> -->
+                    <!-- <div class="card mb-3"> -->
                     <div class="card-body">
                         <div class="image-container">
                             <h3 class=" text-blue text-capitalize">{{ meal.title }}</h3>
                             <div class="d-none d-md-block col-md-3 ">
-                                
+
                                 {% if "placeholder" in meal.featured_image.url %}
                                 <img class="border rounded-circle"
                                     src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" width="100%">
@@ -37,22 +37,29 @@
                                 <img src="{{ meal.featured_image.url }}" width="100%">
                                 {% endif %}
                             </div>
-                            
+
                         </div>
-                        <a href="{% url 'del_meal' meal.id%}"
-                        class="post-link hvr-float-shadow rounded bg-light text-dark" method="post">
-                        <ion-icon name="trash-outline"></ion-icon>
-                        </a>
+
+                        {% if user.is_authenticated %}
+                        <form class="d-inline" action="{% url 'del_meal' slugday meal.id%}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-black">
+                                <!-- <i class="fas fa-heart"></i> -->
+                                <ion-icon name="trash-outline" class="text-blue"></ion-icon>
+                            </button>
+                        </form>
+                        <!-- <span class="text-secondary"><i class="far fa-heart"></i></span> -->
+                        {% endif %}
                         <p>{{meal.meal_description}}</p>
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
+                    <!-- </div> -->
+                    <!-- </div> -->
                 </li>
-            {% endif %}
-            {% endif %}
-            <!-- for of week list -->
-            {% endfor %}
-                </ul>
+                {% endif %}
+                {% endif %}
+                <!-- for of week list -->
+                {% endfor %}
+            </ul>
             {% endif %}
             {% if user.is_authenticated %}
             {% if slugday == "add" %}

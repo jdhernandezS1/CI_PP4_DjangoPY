@@ -74,13 +74,11 @@ class Meals(generic.ListView):
 
 
 class DelMeal(generic.ListView):
-
-    def get(self, request, **kwargs):
-        """
-                """
-        return redirect("planer")
-    
-    def post(self, request, meals, *args, **kwargs):
-        meal = get_object_or_404(Meal, id=meals)
+    model = Meal
+    """
+    A clas To check meal
+    """
+    def post(request, self, slugday, mealid, *args, **kwargs):
+        meal = get_object_or_404(Meal, id=mealid)
         meal.delete()       
-        return render( request, "planer",)
+        return redirect('meals_list', slugday)
