@@ -1,10 +1,18 @@
+"""
+Imports
+"""
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3rd party:
 from django.shortcuts import render,  get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+# Internal
 from .models import Post
-from .forms import *
+from .forms import CommentForm
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-class index(generic.ListView):
+
+class Index(generic.ListView):
     """
     A class for the main page "index"
     """
@@ -12,14 +20,16 @@ class index(generic.ListView):
     template_name = 'index.html'
     paginate_by = 6
 
-class page_not_found(generic.ListView):
+
+class PageNotFound(generic.ListView):
     """
     Page not found Error 404
-    """    
+    """
     model = Post
-    # response.status_code = 404
+    # response.status_code = 404 # depend of the library
     template_name = '404.html'
     paginate_by = 6
+
 
 class PostList(generic.ListView):
     """
@@ -30,6 +40,7 @@ class PostList(generic.ListView):
     template_name = 'posts.html'
     paginate_by = 6
 
+
 class PostDetail(View):
     """
     A class for the Post details ordered by "created on"
@@ -38,7 +49,7 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_on')
-        liked =  False
+        liked = False
         context = {
                 "post": post,
                 "commented": True,
@@ -46,7 +57,7 @@ class PostDetail(View):
                 "liked": liked,
                 "comment_form": CommentForm()
             }
-        if post.likes.filter(id= self.request.user.id).exists():
+        if post.likes.filter(id=self.request.user.id).exists():
             liked = True
         return render(
             request,
@@ -55,18 +66,12 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-        
+
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
         liked = False
-        context = {
-                "post": post,
-                "comments": comments,
-                "commented": True,
-                "comment_form": comment_form,
-                "liked": liked
-            }
+
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
@@ -79,7 +84,13 @@ class PostDetail(View):
             comment.save()
         else:
             comment_form = CommentForm()
-
+        context = {
+                "post": post,
+                "comments": comments,
+                "commented": True,
+                "comment_form": comment_form,
+                "liked": liked
+            }
         return render(
             request,
             "post_detail.html",

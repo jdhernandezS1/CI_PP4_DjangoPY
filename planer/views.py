@@ -88,7 +88,10 @@ class DelMeal(generic.ListView):
     """
     model = Meal
 
-    def post(self, slugday, mealid):
+    def post(self, request, slugday, mealid, **kwargs):
+        """
+        method To Delete meal
+        """
         meal = get_object_or_404(Meal, id=mealid)
         meal.delete()
         return redirect('meals_list', slugday)
@@ -102,5 +105,5 @@ class DelMeal(generic.ListView):
 
 #     def post(self, request, slugday, mealid, **kwargs):
 #         meal = get_object_or_404(Meal, id=mealid)
-#         meal.delete()       
+#         meal.delete()
 #         return redirect('meals_list', slugday)

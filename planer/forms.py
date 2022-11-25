@@ -18,7 +18,7 @@ class MealForm(forms.ModelForm):
         To order items
         """
         model = Meal
-        fields = ('title', 'day', 'meal_description', 'featured_image')
+        fields = ('title', 'day', 'meal_description')
 
 
 class DelMealForm(forms.ModelForm):
