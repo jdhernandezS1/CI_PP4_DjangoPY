@@ -50,6 +50,9 @@
                     <li class="nav-item hvr-float-shadow">
                         <a class="nav-link bg-blue" href="{% url 'posts' %}">Foro</a>
                     </li>
+                    <li class="nav-item hvr-float-shadow">
+                        <a class="nav-link bg-blue" href="{% url 'contact_us' %}">Contact Us</a>
+                    </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item hvr-float-shadow ">
                         <a class="nav-link bg-blue" href="{% url 'planer' %}">My Plan</a>
@@ -126,7 +129,9 @@
 
         </p>
     </footer>
+    <!-- Local Scripts -->
     <script src="{% static 'script/script.js' %}"></script>
+    <!-- Ion icons Script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
