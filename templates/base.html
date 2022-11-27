@@ -44,9 +44,6 @@
             </button>
             <div class="collapse navbar-collapse text-center" id="navbarText">
                 <ul class="navbar-nav justify-content-center me-auto mb-2 mb-lg-0">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                    </li> -->
                     <li class="nav-item hvr-float-shadow">
                         <a class="nav-link bg-blue" href="{% url 'posts' %}">Foro</a>
                     </li>
@@ -57,8 +54,6 @@
                     <li class="nav-item hvr-float-shadow ">
                         <a class="nav-link bg-blue" href="{% url 'planer' %}">My Plan</a>
                     </li>
-                    <!-- <li class="nav-item hvr-float-shadow bg-light">
-                    </li> -->
                     {% else %}
                     <li class="nav-item hvr-float-shadow">
                         <a class="nav-link bg-blue" href="{% url 'account_signup' %}">Register</a>
@@ -131,6 +126,7 @@
     </footer>
     <!-- Local Scripts -->
     <script src="{% static 'script/script.js' %}"></script>
+    <script src="{% static 'script/contact_us.js' %}"></script>
     <!-- Ion icons Script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
