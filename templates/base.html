@@ -79,7 +79,9 @@
                     <li class="nav-item dropdown bg-blue">
                         <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <ion-icon name="settings-sharp"></ion-icon>
+                            <p class="thin text-dark">
+                                <ion-icon name="person-sharp"></ion-icon> {{user}}
+                            </p>
                         </a>
                         <ul class="dropdown-menu bg-blue " aria-labelledby="navbarDropdown">
                             <li>
@@ -91,9 +93,7 @@
                         </ul>
                     </li>
                 </ul>
-                <p class="thin text-dark">
-                    <ion-icon name="person-sharp"></ion-icon> {{user}}
-                </p>
+          
                 {% endif %}
 
             </div>
