@@ -45,23 +45,23 @@
             <div class="collapse navbar-collapse text-center" id="navbarText">
                 <ul class="navbar-nav justify-content-center me-auto mb-2 mb-lg-0">
                     <li class="nav-item hvr-float-shadow">
-                        <a class="nav-link bg-blue" href="{% url 'posts' %}">Foro</a>
-                    </li>
-                    <li class="nav-item hvr-float-shadow">
-                        <a class="nav-link bg-blue" href="{% url 'contact_us' %}">Contact Us</a>
+                        <a class="nav-link bg-blue" href="{% url 'posts' %}"><ion-icon name="newspaper-outline"></ion-icon>Foro</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item hvr-float-shadow ">
-                        <a class="nav-link bg-blue" href="{% url 'planer' %}">My Plan</a>
+                        <a class="nav-link bg-blue" href="{% url 'planer' %}"> <ion-icon name="calendar-outline"></ion-icon>My Plan</a>
                     </li>
                     {% else %}
                     <li class="nav-item hvr-float-shadow">
-                        <a class="nav-link bg-blue" href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link bg-blue" href="{% url 'account_signup' %}"><ion-icon name="person-add-outline"></ion-icon>Register</a>
                     </li>
                     <li class="nav-item hvr-float-shadow">
-                        <a class="nav-link bg-blue" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link bg-blue" href="{% url 'account_login' %}"><ion-icon name="log-in-outline"></ion-icon>Login</a>
                     </li>
                     {% endif %}
+                    <li class="nav-item hvr-float-shadow">
+                        <a class="nav-link bg-blue" href="{% url 'contact_us' %}"><ion-icon name="mail-outline"></ion-icon> Contact </a>
+                    </li>
                 </ul>
                 {% if user.is_authenticated %}
 
@@ -75,11 +75,11 @@
                             <li>
                             </li>
                             <li><a class="dropdown-item p-0  nav-link text-dark"
-                                    href="{% url 'account_logout' %}">Logout</a></li>
+                                    href="{% url 'account_logout' %}"><ion-icon name="log-out-outline"></ion-icon>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
-                <p class="thin text-dark">Hello {{user}}</p>
+                <p class="thin text-dark"><ion-icon name="person-sharp"></ion-icon> {{user}}</p>
                 {% endif %}
 
             </div>
