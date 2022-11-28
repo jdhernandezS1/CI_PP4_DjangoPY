@@ -16,12 +16,8 @@ import os
 import dj_database_url
 
 # parameters
-server = 'djangoapp4.herokuapp.com'
-debug = False
+SERVER = 'djangoapp4.herokuapp.com'
 
-if os.path.isfile('env.py'):
-    import env
-    debug = os.environ.get('FLAG')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -33,12 +29,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = debug
-# DEBUG = False
+DEBUG = False
+if os.path.isfile('env.py'):
+    import env
+    DEBUG = os.environ.get('FLAG')
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = [server, '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [SERVER, '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -61,6 +59,7 @@ INSTALLED_APPS = [
     'contact',
 ]
 
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
