@@ -10,10 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+# Imports
+# 3rd party:
 from pathlib import Path
-from django.contrib.messages import constants as messages
 import os
+from django.contrib.messages import constants as messages
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Internal
 import dj_database_url
+import env
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # parameters
 SERVER = 'djangoapp4.herokuapp.com'
@@ -31,7 +37,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 if os.path.isfile('env.py'):
-    import env
     DEBUG = os.environ.get('FLAG')
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -59,7 +64,7 @@ INSTALLED_APPS = [
     'contact',
 ]
 
-ACCOUNT_EMAIL_VERIFICATION = 'none' 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
