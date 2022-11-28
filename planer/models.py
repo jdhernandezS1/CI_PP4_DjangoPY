@@ -10,31 +10,15 @@ from cloudinary.models import CloudinaryField
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 STATUS = ((0, "DRAFT"), (1, "Published"))
-monday = 1
-tuesday = 2
-wednesday = 3
-thursday = 4
-friday = 5
-saturday = 6
-sunday = 7
 
 DAYS_CHOICES = (
-    (monday, 'monday'),
-    (tuesday, 'tuesday'),
-    (wednesday, 'wednesday'),
-    (thursday, 'thursday'),
-    (friday, 'friday'),
-    (saturday, 'saturday'),
-    (sunday, 'sunday'),
-)
-breakfast = 1
-lunch = 2
-dinner = 3
-# integerfield choices
-MEAL_CHOICES = (
-    (breakfast, 'breakfast'),
-    (lunch, 'lunch'),
-    (dinner, 'dinner'),
+    (1, 'monday'),
+    (2, 'tuesday'),
+    (3, 'wednesday'),
+    (4, 'thursday'),
+    (5, 'friday'),
+    (6, 'saturday'),
+    (7, 'sunday'),
 )
 MEAL_DAY_CHOICES = (
     ("monday", 'monday'),

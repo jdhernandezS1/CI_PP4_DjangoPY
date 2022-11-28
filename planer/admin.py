@@ -1,7 +1,13 @@
+"""
+Imports
+"""
+# 3rd party:
 from django.contrib import admin
-from .models import *
 from django_summernote.admin import SummernoteModelAdmin
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Internal
+from .models import Meal, Day, Week
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 @admin.register(Week)
@@ -24,7 +30,6 @@ class DayAdmin(admin.ModelAdmin):
     search_fields = ['title', 'day_name', 'day_number']
     list_filter = ('title', 'day_name', 'created_on')
     prepopulated_fields = {'slugday': ('title',)}
-
 
 
 @admin.register(Meal)
