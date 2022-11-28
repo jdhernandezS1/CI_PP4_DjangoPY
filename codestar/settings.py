@@ -12,13 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 # Imports
 # 3rd party:
-from pathlib import Path
 import os
+from pathlib import Path
 from django.contrib.messages import constants as messages
+import dj_database_url
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Internal
-import dj_database_url
-import env
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # parameters
@@ -37,6 +36,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 if os.path.isfile('env.py'):
+    import env
     DEBUG = os.environ.get('FLAG')
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
