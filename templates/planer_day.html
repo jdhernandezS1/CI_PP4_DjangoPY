@@ -15,14 +15,14 @@
             {% for day in day_list %}
             {% if day %}
             <div class="col-md-3">
-                <div class="card mb-2">
+                <div class="card mb-2 col-sm-10 w-100 h-100">
                     <div class="card-body">
                         <!-- reference to meals -->
                         <a href="{% url 'meals_list' day.slugday%}"
                             class="post-link hvr-float-shadow rounded bg-light text-dark">
                             <div class="image-container">
                                 {% if day.day_name == 1 %}
-                                <img class="card-img-top"
+                                <img class="card-img-top w-100 h-100"
                                     src="https://res.cloudinary.com/herokupp4/image/upload/v1663331255/cld-sample.jpg">
                                 <div class="image-flash">
                                     <p class="author">Monday</p>
@@ -76,7 +76,7 @@
                 <div class="card mb-2">
                     <div class="card-body">
                         <a href="{% url 'meals_list' 'add' %}"
-                            class="post-link hvr-float-shadow rounded bg-light text-dark">
+                            class="post-link hvr-float-shadow rounded bg-light text-dark ">
                             <div class="image-container">
                                 <img class="card-img-top"
                                     src="https://res.cloudinary.com/herokupp4/image/upload/v1669158446/add.png">
