@@ -7,4 +7,4 @@ function timeout() {
     alert.close();
 }
 
-setTimeout(timeout(), 2000);
+setTimeout(timeout(), 5000);
