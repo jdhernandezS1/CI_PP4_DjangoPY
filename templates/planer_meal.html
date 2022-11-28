@@ -20,16 +20,16 @@
                 <!-- list for -->
                 {% if meal.owner == user %}
                 {% if meal.day == slugday %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center mx-auto">
                     <!-- <div class="col-md-12"> -->
                     <!-- <div class="card mb-3"> -->
-                    <div class="card-body">
+                    <div class="card-body ">
                         <div class="image-container">
                             <h3 class=" text-blue text-capitalize">{{ meal.title }}</h3>
-                            <div class="d-none d-md-block col-md-3 ">
+                            <div class="d-none d-md-block col-md-6 ">
 
                                 {% if "placeholder" in meal.featured_image.url %}
-                                <img class="border rounded-circle"
+                                <img class="border rounded-lg"
                                     src="https://res.cloudinary.com/herokupp4/image/upload/v1668633859/vegsat.jpg"
                                     width="100%">
                                 {% else %}
@@ -40,6 +40,7 @@
                         </div>
 
                         {% if user.is_authenticated %}
+                        <p>{{meal.meal_description}}</p>
                         <form class="d-inline" action="{% url 'del_meal' slugday meal.id%}" method="POST">
                             {% csrf_token %}
                             <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-black ">
@@ -49,7 +50,6 @@
                         </form>
                         <!-- <span class="text-secondary"><i class="far fa-heart"></i></span> -->
                         {% endif %}
-                        <p>{{meal.meal_description}}</p>
                     </div>
                     <!-- </div> -->
                     <!-- </div> -->
