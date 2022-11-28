@@ -5,8 +5,7 @@
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-3 text-orange text-capitalize">{{slugday}} </h1>
-                <!-- <p class="lead">Text.</p> -->
+                <h1 class="display-3 text-orange text-capitalize">{{slugday}} - Plan</h1>
             </div>
         </div>
         <hr>
@@ -15,7 +14,6 @@
     <div class="col-12 mt-3 left">
         <div class="row">
             <!-- meals Lists -->
-            <h2>Meals list</h2>
             {% if meals %}
             <ul class="list-group">
                 {% for meal in meals %}
@@ -32,7 +30,8 @@
 
                                 {% if "placeholder" in meal.featured_image.url %}
                                 <img class="border rounded-circle"
-                                    src="https://res.cloudinary.com/herokupp4/image/upload/v1668633859/vegsat.jpg" width="100%">
+                                    src="https://res.cloudinary.com/herokupp4/image/upload/v1668633859/vegsat.jpg"
+                                    width="100%">
                                 {% else %}
                                 <img class="border rounded-circle" src="{{ meal.featured_image.url }}" width="100%">
                                 {% endif %}
@@ -43,7 +42,7 @@
                         {% if user.is_authenticated %}
                         <form class="d-inline" action="{% url 'del_meal' slugday meal.id%}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-black">
+                            <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-black ">
                                 <!-- <i class="fas fa-heart"></i> -->
                                 <ion-icon name="trash-outline" class="text-blue"></ion-icon>
                             </button>
@@ -64,17 +63,14 @@
             {% if user.is_authenticated %}
             {% if slugday == "add" %}
             <div class="col-12 mt-3 left">
-                <div class="row">
-                    <div class="row text-center">
-                        <div class="">
-                            <form method="post" class="rounded text-center col-md-2 mb-1">
-                                <h3>Add Meal</h3>
-                                {{ meal_form | safe }}
-                                {% csrf_token %}
-                                <button type="submit" class="btn-signup rounded-circle  bg-orange ">Add Meal</button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="col-6 row text-center w-100 p-2 d-flex justify-content-center pdf mt-1">
+                        <form method="post"
+                            class="row col-sm form-group  text-center col-md-2 mb-1">
+                            <h3>Create a Meal</h3>
+                            {{ meal_form | safe }}
+                            {% csrf_token %}
+                            <button type="submit" class="mt-2 p-3 hvr-shrink bg-orange rounded-lg">Add Meal</button>
+                        </form>
                 </div>
             </div>
             {% endif %}
