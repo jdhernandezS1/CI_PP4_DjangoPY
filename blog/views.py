@@ -6,6 +6,7 @@ Imports
 from django.shortcuts import render,  get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 # Internal
 from .models import Post
 from .forms import CommentForm
@@ -91,6 +92,7 @@ class PostDetail(View):
                 "comment_form": comment_form,
                 "liked": liked
             }
+        messages.success(request, 'Your comment was sent')
         return render(
             request,
             "post_detail.html",

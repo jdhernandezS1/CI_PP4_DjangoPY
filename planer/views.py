@@ -7,6 +7,7 @@ from django.shortcuts import render, get_list_or_404, reverse
 from django.shortcuts import get_object_or_404, redirect
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 # Internal
 from .models import Week, Day, Meal
 from .forms import MealForm
@@ -79,6 +80,7 @@ class Meals(generic.ListView):
             context = {
                 'meal_form': meal_form
                 }
+        messages.success(request, 'Meal Was created as well')
         return redirect("planer")
 
 
@@ -94,6 +96,7 @@ class DelMeal(generic.ListView):
         """
         meal = get_object_or_404(Meal, id=mealid)
         meal.delete()
+        messages.success(request, 'Meal Was Deleted as well')
         return redirect('meals_list', slugday)
 
 
