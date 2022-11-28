@@ -8,6 +8,9 @@ body {
     font-weight: 700;
     color: #4A4A4F;
 }
+.bg-image{
+    background-image: url("https://res.cloudinary.com/herokupp4/image/upload/v1669666025/cool-background_1_yqjers.png");
+}
 .bg-orange{
     background-color: #ff8125;
 }
