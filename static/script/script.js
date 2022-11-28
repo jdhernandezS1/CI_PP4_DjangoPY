@@ -1,10 +1,8 @@
 /**
  * Notifications velocity
  */
-function timeout() {
+setTimeout(function () {
     let messages = document.getElementById('msg');
     let alert = new bootstrap.Alert(messages);
     alert.close();
-}
-
-setTimeout(timeout(), 5000);
+}, 2000);
