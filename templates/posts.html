@@ -6,7 +6,7 @@
     <div class="row">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h2 class="display-3 text-orange">Veggetarians community </h2>
+                <h2 class="display-3 text-dark">Veggetarians community </h2>
                 <p class="lead">Feel free to share, comment content with the politics of respect.</p>
             </div>
         </div>
@@ -22,9 +22,10 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg">
+                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg"
+                                    alt="Post">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Day name">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
@@ -36,7 +37,7 @@
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
+                            <p class="card-text text-dark h6">{{ post.created_on}} <i class="far fa-heart"></i>
                                 {{ post.number_of_likes }}</p>
                         </div>
                     </div>
