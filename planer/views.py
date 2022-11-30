@@ -3,10 +3,10 @@ Imports
 """
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 3rd party:
-from django.shortcuts import render, get_list_or_404, reverse
+from django.shortcuts import render, get_list_or_404  # reverse
 from django.shortcuts import get_object_or_404, redirect
-from django.views import generic, View
-from django.http import HttpResponseRedirect
+from django.views import generic  # View
+# from django.http import HttpResponseRedirect
 from django.contrib import messages
 # Internal
 from .models import Week, Day, Meal
@@ -37,7 +37,7 @@ class Meals(generic.ListView):
     A class for the Weeks ordered by "created on"
     """
     def get(self, request, slugday, *args, **kwargs):
-        if (get_list_or_404(Meal)):
+        if get_list_or_404(Meal):
             meals = get_list_or_404(
                 Meal,
                 slugmeal="True")
@@ -69,17 +69,17 @@ class Meals(generic.ListView):
             meals = meal_form.save(commit=False)
             meals.owner = user
             meals.save()
-            context = {
-                "slugday": slugday,
-                "meals": meals,
-                "meal_form": MealForm
-                }
+            # context = {
+            #     "slugday": slugday,
+            #     "meals": meals,
+            #     "meal_form": MealForm
+            #     }
 
         else:
             meal_form = MealForm()
-            context = {
-                'meal_form': meal_form
-                }
+            # context = {
+            #     'meal_form': meal_form
+            #     }
         messages.success(request, 'Meal Was created as well')
         return redirect("planer")
 

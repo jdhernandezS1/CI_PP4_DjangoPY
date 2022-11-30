@@ -22,8 +22,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg"
-                                    alt="Post">
+                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" alt="Post">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Day name">
                                 {% endif %}
@@ -37,8 +36,12 @@
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-dark h6">{{ post.created_on}} <i class="far fa-heart"></i>
-                                {{ post.number_of_likes }}</p>
+                            <p class="card-text text-dark h6">{{ post.created_on}}
+                            </p>
+                            <p>
+                                <i class="far fa-heart"></i>
+                                {{ post.number_of_likes }}
+                            </p>
                         </div>
                     </div>
                 </div>

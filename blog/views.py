@@ -47,6 +47,9 @@ class PostDetail(View):
     A class for the Post details ordered by "created on"
     """
     def get(self, request, slug, *args, **kwargs):
+        """
+        Get PostDetail Function
+        """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_on')
@@ -67,7 +70,9 @@ class PostDetail(View):
         )
 
     def post(self, request, slug, *args, **kwargs):
-
+        """
+        Post function to comment
+        """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
@@ -105,6 +110,9 @@ class PostLike(View):
     A class for likes
     """
     def post(self, request, slug, *args, **kwargs):
+        """
+        Post Likes function
+        """
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)

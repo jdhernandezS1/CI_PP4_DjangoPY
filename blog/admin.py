@@ -19,7 +19,7 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
-    summernote_filds= ('content')
+    summernote_filds = ('content')
 
 
 @admin.register(Comment)
@@ -28,10 +28,13 @@ class CommentAdmin(admin.ModelAdmin):
     Comment model class For Comments in Post
     """
 
-    list_display = ('name', 'body', 'post', 'created_on','approved')
+    list_display = ('name', 'body', 'post', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('name', 'email', 'body')
     actions = ['approve_comments']
 
-    def approve_comments(self, request, queryset ):
+    def approve_comments(self, request, queryset):
+        """
+        Approve comments function
+        """
         queryset.update(approved=True)

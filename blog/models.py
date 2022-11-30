@@ -9,7 +9,7 @@ from cloudinary.models import CloudinaryField
 # Internal
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Define Option variables 
+# Define Option variables
 STATUS = (
     (0, "DRAFT"),
     (1, "Published")
