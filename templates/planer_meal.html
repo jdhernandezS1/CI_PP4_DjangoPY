@@ -16,25 +16,25 @@
         <div class="row">
             <!-- meals Lists -->
             {% if meals %}
-            <ul class="list-group">
+            <ul class="list-group list-unstyled">
                 {% for meal in meals %}
                 <!-- list for -->
                 {% if meal.owner == user %}
                 {% if meal.day == slugday %}
-                <li class="list-group-item d-flex justify-content-between align-items-center mx-auto">
+                <li class="list-group-item d-flex justify-content-between align-items-center mx-auto display-8">
                     <!-- <div class="col-md-12"> -->
                     <!-- <div class="card mb-3"> -->
                     <div class="card-body ">
-                        <div class="image-container">
-                            <h3 class=" text-blue text-capitalize">{{ meal.title }}</h3>
-                            <div class="d-none d-md-block col-md-6 ">
+                        <div class="image-container ">
+                            <h3 class=" text-dark text-capitalize bg-blue rounded text-center">{{ meal.title }}</h3>
+                            <div class="d-none d-md-block col-md-6 p-3">
 
                                 {% if "placeholder" in meal.featured_image.url %}
-                                <img class="border rounded-lg"
+                                <img class="border rounded "
                                     src="https://res.cloudinary.com/herokupp4/image/upload/v1668633859/vegsat.jpg"
                                     width="100%">
                                 {% else %}
-                                <img class="border rounded-circle" src="{{ meal.featured_image.url }}" width="100%">
+                                <img class="border rounded" src="{{ meal.featured_image.url }}" width="100%">
                                 {% endif %}
                             </div>
 
@@ -44,9 +44,9 @@
                         <p>{{meal.meal_description}}</p>
                         <form class="d-inline" action="{% url 'del_meal' slugday meal.id%}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-black ">
+                            <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-dark">
                                 <!-- <i class="fas fa-heart"></i> -->
-                                <ion-icon name="trash-outline" class="text-blue"></ion-icon>
+                                <ion-icon name="trash-outline" value="{{meal.id}}"class="text-dark rounded-circle border-primary bg-blue"></ion-icon>
                             </button>
                         </form>
                         <!-- <span class="text-secondary"><i class="far fa-heart"></i></span> -->
@@ -55,6 +55,7 @@
                     <!-- </div> -->
                     <!-- </div> -->
                 </li>
+                <hr class="bg-transparent">
                 {% endif %}
                 {% endif %}
                 <!-- for of week list -->
