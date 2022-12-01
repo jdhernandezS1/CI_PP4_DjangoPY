@@ -31,43 +31,48 @@
                 <span class="card-text "> {{ post.content | safe }} </span>
 
                 <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text "></p>
+                <p class="card-text ">
                 <div class="row">
 
-                    <div class="col-1">
+                    <div class="col-4">
                         <strong>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
-                                {% if liked  %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-                                    <span class="text-white-50">-</span>
-                                    <ion-icon name="heart" class="text-danger rounded-circle"></ion-icon>
-                                </button>
-                                {% else %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-                                    <span class="text-white-50">-</span>
-                                    <ion-icon name="heart-half-outline" class="text-danger rounded-circle"></ion-icon>
-                                </button>
-                                {% endif %}
+                                <span>
+                                    {% if liked  %}
+                                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                                        <ion-icon name="heart" class="text-danger rounded-circle"></ion-icon>
+                                        <span class="text-white-50">-</span>
+                                    </button>
+                                    <span class="text-secondary">{{ post.number_of_likes }} </span>
+                                    {% else %}
+                                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                                        <ion-icon name="heart-half-outline" class="text-danger rounded-circle"></ion-icon>
+                                        <span class="text-white-50">-</span>
+                                    </button>
+                                    <span class="text-secondary">{{ post.number_of_likes }} </span>
+                                    {% endif %}
+                                </span>
                             </form>
                             {% else %}
                             <span>
                                 <ion-icon name="heart-outline" class=" text-dark bg-blue rounded-circle"></ion-icon>
+                                <span class="text-secondary">{{ post.number_of_likes }} </span>
                             </span>
                             {% endif %}
                             <!-- The number of likes goes before the closing strong tag -->
-                            <span class="text-secondary">{{ post.number_of_likes }} </span>
                         </strong>
                     </div>
-                    <div class="col-1">
+                    <div class="col-3">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary">
-                            <ion-icon name="chatbubbles-sharp"></ion-icon>
-                            {{ total_comments }}
+                            <span><ion-icon name="chatbubbles-sharp"></ion-icon>
+                                {{ total_comments }}</span>
                         </strong>
                         {% endwith %}
                     </div>
+                </p>
                 </div>
             </div>
         </div>
