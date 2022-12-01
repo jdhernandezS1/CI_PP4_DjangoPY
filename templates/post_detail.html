@@ -6,10 +6,10 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">
+                <h1 class="post-title text-light">{{post.title}}
                 </h1>
                 <!-- Post author goes before the | the post's created date goes after -->
-                <h2 class="post-subtitle"> {{post.title}} | By {{post.author}}</h2>
+                <h5 class="post-subtitle text-light"> {{post.title}} | By {{post.author}}</h5>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
@@ -34,7 +34,7 @@
                 <p class="card-text ">
                 <div class="row">
 
-                    <div class="col-4">
+                    <div class="col-4 text-dark">
                         <strong>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
@@ -45,13 +45,13 @@
                                         <ion-icon name="heart" class="text-danger rounded-circle"></ion-icon>
                                         <span class="text-white-50">-</span>
                                     </button>
-                                    <span class="text-secondary">{{ post.number_of_likes }} </span>
+                                    <span class="text-dark">{{ post.number_of_likes }} </span>
                                     {% else %}
                                     <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
                                         <ion-icon name="heart-half-outline" class="text-danger rounded-circle"></ion-icon>
                                         <span class="text-white-50">-</span>
                                     </button>
-                                    <span class="text-secondary">{{ post.number_of_likes }} </span>
+                                    <span class="text-dark">{{ post.number_of_likes }} </span>
                                     {% endif %}
                                 </span>
                             </form>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-3">
                         {% with comments.count as total_comments %}
-                        <strong class="text-secondary">
+                        <strong class="text-dark">
                             <span><ion-icon name="chatbubbles-sharp"></ion-icon>
                                 {{ total_comments }}</span>
                         </strong>
@@ -115,7 +115,7 @@
                 {{ comment_form | crispy }}
                 {% csrf_token %}
 
-                <button type="submit" class="mt-1 btn btn-signup btn-lg rounded col-2 bg-dark p-1"><span class="text-dark">- </span> <ion-icon name="send"></ion-icon></button>
+                <button type="submit" class="mt-1 btn btn-signup btn-lg rounded col-2 bg-dark p-1"><span class="text-light">- </span> <ion-icon name="send"></ion-icon></button>
             </form>
             {% endif %}
         </div>
