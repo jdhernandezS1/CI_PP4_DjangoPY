@@ -10,7 +10,7 @@
         </div>
         <hr>
     </div>
-    
+
     <!-- meals Column -->
     <div class="col-12 mt-3 left">
         <div class="row">
@@ -22,39 +22,32 @@
                 {% if meal.owner == user %}
                 {% if meal.day == slugday %}
                 <li class="list-group-item d-flex justify-content-between align-items-center mx-auto display-8">
-                    <!-- <div class="col-md-12"> -->
-                    <!-- <div class="card mb-3"> -->
                     <div class="card-body ">
                         <div class="image-container ">
                             <h3 class=" text-dark text-capitalize bg-blue rounded text-center">{{ meal.title }}</h3>
                             <div class="d-none d-md-block col-md-6 p-3">
-
                                 {% if "placeholder" in meal.featured_image.url %}
                                 <img class="border rounded "
                                     src="https://res.cloudinary.com/herokupp4/image/upload/v1668633859/vegsat.jpg"
-                                    alt="meal"
-                                    width="100%">
+                                    alt="meal" width="100%">
                                 {% else %}
                                 <img class="border rounded" src="{{ meal.featured_image.url }}" width="100%" alt="meal">
                                 {% endif %}
                             </div>
 
                         </div>
-
                         {% if user.is_authenticated %}
                         <p>{{meal.meal_description}}</p>
                         <form class="d-inline" action="{% url 'del_meal' slugday meal.id%}" method="POST">
                             {% csrf_token %}
                             <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-dark">
                                 <span class="text-white-50">-</span>
-                                <ion-icon name="trash-outline" value="{{meal.id}}"class="text-dark rounded-circle border-primary bg-blue"></ion-icon>
+                                <ion-icon name="trash-outline" value="{{meal.id}}"
+                                    class="text-dark rounded-circle border-primary bg-blue"></ion-icon>
                             </button>
                         </form>
-                        <!-- <span class="text-secondary"><i class="far fa-heart"></i></span> -->
                         {% endif %}
                     </div>
-                    <!-- </div> -->
-                    <!-- </div> -->
                 </li>
                 <hr class="bg-transparent">
                 {% endif %}
@@ -67,13 +60,12 @@
             {% if slugday == "add" %}
             <div class="col-12 mt-3 left">
                 <div class="col-6 row text-center w-100 p-2 d-flex justify-content-center pdf mt-1">
-                        <form method="post"
-                            class="row col-sm form-group  text-center col-md-2 mb-1">
-                            <h3>Create a Meal</h3>
-                            {{ meal_form | safe }}
-                            {% csrf_token %}
-                            <button type="submit" class="mt-2 p-3 hvr-shrink bg-orange rounded-lg">Add Meal</button>
-                        </form>
+                    <form method="post" class="row col-sm form-group  text-center col-md-2 mb-1">
+                        <h3>Create a Meal</h3>
+                        {{ meal_form | safe }}
+                        {% csrf_token %}
+                        <button type="submit" class="mt-2 p-3 hvr-shrink bg-orange rounded-lg">Add Meal</button>
+                    </form>
                 </div>
             </div>
             {% endif %}
@@ -89,7 +81,6 @@
             {% endif %}
             {% if page_obj.has_next %}
             <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
             {% endif %}
         </ul>
     </nav>
