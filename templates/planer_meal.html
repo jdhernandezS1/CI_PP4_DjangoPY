@@ -32,9 +32,10 @@
                                 {% if "placeholder" in meal.featured_image.url %}
                                 <img class="border rounded "
                                     src="https://res.cloudinary.com/herokupp4/image/upload/v1668633859/vegsat.jpg"
+                                    alt="meal"
                                     width="100%">
                                 {% else %}
-                                <img class="border rounded" src="{{ meal.featured_image.url }}" width="100%">
+                                <img class="border rounded" src="{{ meal.featured_image.url }}" width="100%" alt="meal">
                                 {% endif %}
                             </div>
 
@@ -45,7 +46,7 @@
                         <form class="d-inline" action="{% url 'del_meal' slugday meal.id%}" method="POST">
                             {% csrf_token %}
                             <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-dark">
-                                <!-- <i class="fas fa-heart"></i> -->
+                                <span class="text-white-50">-</span>
                                 <ion-icon name="trash-outline" value="{{meal.id}}"class="text-dark rounded-circle border-primary bg-blue"></ion-icon>
                             </button>
                         </form>
