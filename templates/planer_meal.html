@@ -65,8 +65,8 @@
             {% if user.is_authenticated %}
             {% if slugday == "add" %}
             <div class="col-12 mt-3 left">
-                <div class="col-6 row text-center w-100 p-2 d-flex justify-content-center pdf mt-1">
-                    <form method="post" class="row col-sm form-group  text-center col-md-2 mb-1">
+                <div class="col-8 row text-center w-100 p-2 d-flex justify-content-center pdf mt-1">
+                    <form method="post" class="row col-sm form-group  text-center col-md-6 mb-1">
                         <h3>Create a Meal</h3>
                         {{ meal_form | safe }}
                         {% csrf_token %}
