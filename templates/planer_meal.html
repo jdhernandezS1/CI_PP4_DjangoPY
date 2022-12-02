@@ -38,12 +38,18 @@
                         </div>
                         {% if user.is_authenticated %}
                         <p>{{meal.meal_description}}</p>
+                        <a class="btn-like text-dark text-dark rounded-circle border-primary bg-blue text-decoration-none"
+                            href="{% url 'ed_meal' slugday meal.id%}">
+                            <ion-icon name="create-outline" class="text-dark rounded-circle border-primary bg-blue">
+                            </ion-icon> <span>Edit</span>
+                        </a>
                         <form class="d-inline" action="{% url 'del_meal' slugday meal.id%}" method="POST">
                             {% csrf_token %}
                             <button type="submit" name="mealid" value="{{meal.id}}" class="btn-like text-dark">
-                                <span class="text-white-50">-</span>
                                 <ion-icon name="trash-outline" value="{{meal.id}}"
-                                    class="text-dark rounded-circle border-primary bg-blue"></ion-icon>
+                                    class="text-dark rounded-circle border-primary bg-blue">
+                                </ion-icon>
+                                <span class="">Delete</span>
                             </button>
                         </form>
                         {% endif %}

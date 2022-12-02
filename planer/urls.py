@@ -30,4 +30,9 @@ urlpatterns = [
         views.DelMeal.as_view(),
         name='del_meal'
         ),
+    path(
+        'planer/<slug:slugday>_meals/edit<int:mealid>',
+        views.EdMeal.as_view(),
+        name='ed_meal'
+        ),
         ]

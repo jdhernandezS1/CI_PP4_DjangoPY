@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3 text-orange text-capitalize"> Edit {{slugday}} meal</h1>
+                <!-- <p class="lead">Text.</p> -->
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="col-12 mt-3 d-flex justify-content-center">
+        <div class="row w-100 container">
+            <form method="post" class="w-100 row col-sm form-group  text-center col-md-2 mb-1 m-1 rounded">
+                <h3>Edit Meal</h3>
+                {{ meal_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="mt-2 p-2 hvr-shrink bg-orange rounded-lg">Add Meal</button>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

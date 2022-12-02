@@ -100,13 +100,42 @@ class DelMeal(generic.ListView):
         return redirect('meals_list', slugday)
 
 
-# class EdMeal(generic.ListView):
-#     """
-#     A clas To Delete meal
-#     """
-#     model = Meal
+class EdMeal(generic.ListView):
+    """
+    A clas To edit meal
+    """
+    model = Meal
 
-#     def post(self, request, slugday, mealid, **kwargs):
-#         meal = get_object_or_404(Meal, id=mealid)
-#         meal.delete()
-#         return redirect('meals_list', slugday)
+    def get(self, request, slugday, mealid, **kwargs):
+        """
+        method To get meal
+        """
+        meal = get_object_or_404(Meal, id=mealid)
+
+        context = {
+                "slugday": slugday,
+                "meal_form": MealForm(instance=meal)
+                }
+        return render(
+            request,
+            "planer_meal_edit.html",
+            context,)
+
+    def post(self, request, slugday, mealid, **kwargs):
+        """
+        method To get meal
+        """
+        meal = get_object_or_404(Meal, id=mealid)
+        meal_form = MealForm(request.POST, request.FILES, instance=meal)
+        if meal_form.is_valid():
+            user = request.user
+            meals = meal_form.save(commit=False)
+            meals.owner = user
+            meals.save()
+            messages.success(request, 'Meal Was Edited as well')
+        else:
+            messages.success(
+                request,
+                'Please Check the fields was filled as well'
+                )
+        return redirect('meals_list', slugday)
