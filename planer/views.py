@@ -69,17 +69,8 @@ class Meals(generic.ListView):
             meals = meal_form.save(commit=False)
             meals.owner = user
             meals.save()
-            # context = {
-            #     "slugday": slugday,
-            #     "meals": meals,
-            #     "meal_form": MealForm
-            #     }
-
         else:
             meal_form = MealForm()
-            # context = {
-            #     'meal_form': meal_form
-            #     }
         messages.success(request, 'Meal Was created as well')
         return redirect("planer")
 
