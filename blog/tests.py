@@ -31,4 +31,4 @@ class TestPostDetailViews(TestCase):
         """
         response = self.client.get('/posts/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'posts/posts.html')
+        self.assertTemplateUsed(response, 'posts.html')

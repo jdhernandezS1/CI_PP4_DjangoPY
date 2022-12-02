@@ -290,7 +290,7 @@ The following models represent the database model structure of the website:
 
 <details><summary>Nav Bar</summary>
 <img src="readme/design/navbarss.png">
-<img src="readme/design/navbarbs.png)">
+<img src="readme/design/navbarbs.png">
 
 </details>
 
@@ -323,8 +323,7 @@ The following models represent the database model structure of the website:
 - User stories covered: 3
 
 <details><summary>Sign Up</summary>
-
-<img src="readme/design/signup.png)">
+<img src="readme/design/signup.png">
 </details>
 
 
@@ -901,31 +900,33 @@ The website was tested on the following devices:
 
 #### Create a Database
 
-Database Create an elephant SQL
-<details>
-<summary>Create Database</summary>
-<img src="readme/deployment/sql1.png">
-<img src="readme/deployment/sql2.png">
-<img src="readme/deployment/sql3.png">
-<img src="readme/deployment/sql4.png">
-</details>
-
-<details><summary>Get Database URL</summary>
-<img src="readme/deployment/sql5.png">
-</details>
+- Database Create an elephant SQL
+- Go to Elephant SQL and crew a new instance.
+- select a server
+    <details>
+    <summary>Create Database</summary>
+    <img src="readme/deployment/sql1.png">
+    <img src="readme/deployment/sql2.png">
+    <img src="readme/deployment/sql3.png">
+    <img src="readme/deployment/sql4.png">
+    </details>
+- Get Database Environment Url
+  <details><summary>Get Database URL</summary>
+  <img src="readme/deployment/sql5.png">
+  </details>
 
 #### Cloudinary
 
-
-<details><summary>Get Cloudinary environment variable</summary>
-<img src="readme/deployment/cloudinary.png">
-</details>
+Create a cloudinary Acount and get the environment Url
+  <details><summary>Get Cloudinary environment variable</summary>
+  <img src="readme/deployment/cloudinary.png">
+  </details>
 
 #### Config Django App
 
 - Add installed App cloudinary.
 - config static files with cloudinary.
-  <details><summary>Create App.</summary> <img src="readme/deployment/djangostatic.png"> </details>
+  <details><summary>Create Env.py.</summary> <img src="readme/deployment/djangostatic.png"> </details>
 - Create a procfile and add " web: gunicorn name_of_main_app.wsgi".
 - collect statics in Django project.
 - Generate requirements by freeze command.
