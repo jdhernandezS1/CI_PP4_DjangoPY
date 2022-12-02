@@ -87,12 +87,10 @@
             <!-- We want a for loop inside the tags to iterate through each comment in comments -->
             {% for comment in comments %}
             <div class="comments" style="padding: 10px;">
-                <p>
                     <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                     <span class="font-weight-bold text-capitalize">{{ comment.name }}</span>
                     <!-- The comment's created date goes here -->
                     <mark class="font-italic rounded border border-dark"> {{ comment.created_on|date}} </mark> wrote:
-                </p>
                 <!-- The body of the comment goes before the | -->
                 <p class="bg-dark">
                     {{ comment.body | linebreaks }}

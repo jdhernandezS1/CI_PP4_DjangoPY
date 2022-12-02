@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-
 {% block content %}
-
 <div class="container-fluid">
   <h1 class="text-dark p-3 display-3 text-center">Contact Us</h1>
   <hr class="">
@@ -12,9 +10,8 @@
       </h3>
       <div class="row">
         <div class="col-sm card mb-4 mt-3">
-          <form id="contact-form" class="mx-auto w-100" class="border-lg">
+          <form id="contact-form" class="mx-auto w-100 border-lg">
             <div>
-
               <div class="form-group w-100 pb-3 d-flex justify-content-center">
                 <label for="user_name" class="text-white-50"> -</label>
                 <input type="text" id="user_name" name="user_name" placeholder="Enter name" class="rounded">
@@ -28,8 +25,7 @@
                 <textarea id="message" name="message" placeholder="Write te message " class="rounded"></textarea>
               </div>
               <div class="form-group w-100 p-3 d-flex justify-content-center">
-                <input type="submit" class="w-50 hvr-shrink bg-orange rounded p-2 "
-                value="Send">
+                <input type="submit" class="w-50 hvr-shrink bg-orange rounded p-2 " value="Send">
               </div>
             </div>
           </form>
@@ -37,7 +33,5 @@
       </div>
     </div>
   </div>
-  <!-- Local Scripts -->
-
 </div>
 {%endblock%}
