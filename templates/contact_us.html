@@ -10,7 +10,8 @@
   </div>
   <div class="container w-100 p-0">
     <div class="row">
-      <form id="contact-form" class="mx-auto w-100 border-lg p-0">
+      <form method="post" id="contact-form" class="mx-auto w-100 border-lg p-0">
+        {% csrf_token %}
         <div>
           <div class="form-group w-100 p-3 d-flex justify-content-center">
             <label for="user_name" class="text-white-50"> -</label>

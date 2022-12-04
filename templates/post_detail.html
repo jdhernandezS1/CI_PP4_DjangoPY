@@ -16,7 +16,7 @@
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" alt="postpic">
                 {% else %}
-                <img src="{{ post.featured_image.url }} " alt="postpic" >
+                <img src="{{ post.featured_image.url }} " alt="postpic">
                 {% endif %}
             </div>
         </div>
@@ -32,33 +32,34 @@
                 <div class="card-text ">
                     <div class="row">
                         <div class="col-4 text-dark">
-                                {% if user.is_authenticated %}
-                                <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
-                                    {% csrf_token %}
-                                    <span>
-                                        {% if liked  %}
-                                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-                                            <ion-icon name="heart" class="text-danger rounded-circle"></ion-icon>
-                                            <span class="text-white-50">-</span>
-                                        </button>
-                                        <span class="text-dark">{{ post.number_of_likes }} </span>
-                                        {% else %}
-                                        <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
-                                            <ion-icon name="heart-half-outline" class="text-danger rounded-circle">
-                                            </ion-icon>
-                                            <span class="text-white-50">-</span>
-                                        </button>
-                                        <span class="text-dark">{{ post.number_of_likes }} </span>
-                                        {% endif %}
-                                    </span>
-                                </form>
-                                {% else %}
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                                {% csrf_token %}
                                 <span>
-                                    <ion-icon name="heart-outline" class=" text-dark bg-blue rounded-circle"></ion-icon>
+                                    {% if liked  %}
+                                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                                        <ion-icon name="heart" class="text-danger rounded-circle"></ion-icon>
+                                        <span class="text-white-50">-</span>
+                                    </button>
                                     <span class="text-dark">{{ post.number_of_likes }} </span>
+                                    {% else %}
+                                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                                        <ion-icon name="heart-half-outline" class="text-danger rounded-circle">
+                                        </ion-icon>
+                                        <span class="text-white-50">-</span>
+                                    </button>
+                                    <span class="text-dark">{{ post.number_of_likes }} </span>
+                                    {% endif %}
                                 </span>
-                                {% endif %}
-                                <!-- The number of likes goes before the closing strong tag -->
+                            </form>
+                            {% else %}
+                            <span>
+                                <ion-icon name="heart-half-outline" class="text-danger rounded-circle">
+                                </ion-icon>
+                                <span class="text-dark">{{ post.number_of_likes }} </span>
+                            </span>
+                            {% endif %}
+                            <!-- The number of likes goes before the closing strong tag -->
                         </div>
                         <div class="col-3">
                             {% with comments.count as total_comments %}
@@ -71,55 +72,55 @@
                             {% endwith %}
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col">
-        <hr>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col card mb-4  mt-3 ">
-        <h3>Comments:</h3>
-        <div class="card-body">
-            <!-- We want a for loop inside the tags to iterate through each comment in comments -->
-            {% for comment in comments %}
-            <div class="comments" style="padding: 10px;">
+    <div class="row">
+        <div class="col card mb-4  mt-3 ">
+            <h3>Comments:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the tags to iterate through each comment in comments -->
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
                     <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                     <span class="font-weight-bold text-capitalize">{{ comment.name }}</span>
                     <!-- The comment's created date goes here -->
                     <mark class="font-italic rounded border border-dark"> {{ comment.created_on|date}} </mark> wrote:
-                <!-- The body of the comment goes before the | -->
-                <p class="bg-dark">
-                    {{ comment.body | linebreaks }}
-                </p>
+                    <!-- The body of the comment goes before the | -->
+                    <p class="bg-dark">
+                        {{ comment.body | linebreaks }}
+                    </p>
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
             </div>
-            <!-- Our for loop ends here -->
-            {% endfor %}
+        </div>
+        <div class="col-md-12 card mb-4  mt-3">
+            <div class="card-body">
+                <!-- For later -->
+                {% if user.is_authenticated %}
+
+                <h3 class="text-dark thin">Leave a comment:</h3>
+                <p class="text-capitalize">Posting as: {{ user.username }}</p>
+                <form method="post" class="rounded text-center" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+
+                    <button type="submit" class="mt-1 btn btn-signup btn-lg rounded col-2 bg-dark p-1"><span
+                            class="text-light">- </span>
+                        <ion-icon name="send"></ion-icon>
+                    </button>
+                </form>
+                {% endif %}
+            </div>
         </div>
     </div>
-    <div class="col-md-12 card mb-4  mt-3">
-            <div class="card-body">
-        <!-- For later -->
-        {% if user.is_authenticated %}
-
-        <h3 class="text-dark thin">Leave a comment:</h3>
-        <p class="text-capitalize">Posting as: {{ user.username }}</p>
-        <form method="post" class="rounded text-center" style="margin-top: 1.3em;">
-            {{ comment_form | crispy }}
-            {% csrf_token %}
-
-            <button type="submit" class="mt-1 btn btn-signup btn-lg rounded col-2 bg-dark p-1"><span
-                    class="text-light">- </span>
-                <ion-icon name="send"></ion-icon>
-            </button>
-        </form>
-        {% endif %}
-    </div>
-</div>
-</div>
 </div>
 
 {% endblock content %}
