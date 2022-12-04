@@ -15,7 +15,7 @@
             <div class="row text-center">
                 <h2 class="p-2 display-3"> Community Rules</h2>
                 <ul class="text-capitalize list-group list-group-flush list-unstyled">
-                    <li >
+                    <li>
                         Cant be used bad worlds and 18+ content.
                     </li>
                     <li>
@@ -41,19 +41,19 @@
                 <div class="col-md-6">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" alt="Post">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Day name">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author text-dark">Author: {{ post.author }}</p>
-                                </div>
-                            </div>
                             <a href="{% url 'post_detail' post.slug %}"
-                                class="post-link hvr-float-shadow rounded  text-dark">
+                                class="post-link hvr-float-shadow rounded w-100 text-dark">
+                                <div class="image-container">
+                                    {% if "placeholder" in post.featured_image.url %}
+                                    <img class="card-img-top"
+                                        src="https://www.mend.io/wp-content/media/2020/03/5-tips_small.jpg" alt="Post">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="Day name">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <p class="author text-dark">Author: {{ post.author }}</p>
+                                    </div>
+                                </div>
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
                             </a>
@@ -61,13 +61,14 @@
                             <p class="card-text text-dark h6">{{ post.created_on}}
                             </p>
                             <p class="text-dark">
-                                <ion-icon class="border p-1 border-dark rounded-circle" name="thumbs-up-outline"></ion-icon>
+                                <ion-icon class="border p-1 border-dark rounded-circle" name="thumbs-up-outline">
+                                </ion-icon>
                                 {{ post.number_of_likes }}
                             </p>
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+                {% if forloop.counter|divisibleby:2 %}
             </div>
             <div class="row">
                 {% endif %}
