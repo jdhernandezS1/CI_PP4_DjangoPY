@@ -3,32 +3,34 @@ Imports
 """
 # 3rd party:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
+from .views import Index, PostList
 # Internal
+import unittest
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-class TestHomeViews(TestCase):
+class HomePageTest(TestCase):
     """
-    A class for testing exercises views
+    Home Page Test
     """
-    def test_get_home_page(self):
+    def test_environment_set_in_context(self):
         """
-        This test checks if the Home page is displayed
+        Home page Test
         """
-        response = self.client.get('/posts/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'posts/posts.html')
+        request = RequestFactory().get('')
+        view = Index()
+        view.setup(request)
 
 
-class TestPostDetailViews(TestCase):
+class ForoPageTest(TestCase):
     """
-    A class for testing exercises views
+    Foro Page Test
     """
-    def test_get_postdetail_page(self):
+    def test_environment_set_in_context(self):
         """
-        This test checks if the Post detail page is displayed
+        Post
         """
-        response = self.client.get('/posts/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'posts.html')
+        request = RequestFactory().get('/posts/')
+        view = PostList()
+        view.setup(request)

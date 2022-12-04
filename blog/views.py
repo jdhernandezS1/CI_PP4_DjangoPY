@@ -22,6 +22,16 @@ class Index(generic.ListView):
     paginate_by = 6
 
 
+class ServerDeniesAcces(generic.ListView):
+    """
+    Page not found Error 403
+    """
+    model = Post
+    # response.status_code = 404 # depend of the library
+    template_name = '403.html'
+    paginate_by = 6
+
+
 class PageNotFound(generic.ListView):
     """
     Page not found Error 404
@@ -29,6 +39,16 @@ class PageNotFound(generic.ListView):
     model = Post
     # response.status_code = 404 # depend of the library
     template_name = '404.html'
+    paginate_by = 6
+
+
+class InternalServerError(generic.ListView):
+    """
+    Page not found Error 500
+    """
+    model = Post
+    # response.status_code = 404 # depend of the library
+    template_name = '500.html'
     paginate_by = 6
 
 
