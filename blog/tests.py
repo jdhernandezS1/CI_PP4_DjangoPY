@@ -6,7 +6,6 @@ Imports
 from django.test import RequestFactory, TestCase
 from .views import Index, PostList
 # Internal
-import unittest
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 

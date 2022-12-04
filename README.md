@@ -31,9 +31,6 @@
     - [Browser compatibility](#browser-compatibility)
   - [Bugs](#bugs)
   - [Configuration](#configuration)
-    - [Google emails](#google-emails)
-    - [Forking the GitHub Repository](#forking-the-github-repository)
-    - [Making a Local Clone](#making-a-local-clone)
   - [Credits](#credits)
   - [Acknowledgements](#acknowledgements)
 
