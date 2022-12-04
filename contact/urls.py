@@ -1,10 +1,9 @@
 """
 Imports
 """
-# 3rd party:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-from django.contrib import admin
-from django.urls import path, include
+# 3rd party:
+from django.urls import path
 # Internal
 from . import views
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
