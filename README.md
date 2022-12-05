@@ -643,6 +643,12 @@ Overall the results are very good for the 4 values.
 <img src="readme/lighthouse/posts_pc.png">
 </details>
 
+<details><summary>Error Pages</summary>
+<img src="readme/lighthouse/403pc.png">
+<img src="readme/lighthouse/404pc.png">
+<img src="readme/lighthouse/500pc.png">
+
+</details>
 </details>
 
 <hr>
@@ -668,6 +674,13 @@ Overall the results are very good for the 4 values.
 
 <details><summary>Posts</summary>
 <img src="readme/lighthouse/posts_phone.png">
+</details>
+
+<details><summary>Error Pages</summary>
+<img src="readme/lighthouse/403phone.png">
+<img src="readme/lighthouse/404phone.png">
+<img src="readme/lighthouse/500phone.png">
+
 </details>
 
 </details>
@@ -710,7 +723,14 @@ The WAVE WebAIM web accessibility evaluation tool was used to test the websites 
 <details><summary>Contact us</summary>
 <img src="readme/wave/contactus.png">
 </details>
+</details>
 
+<details><summary>Error pages </summary>
+<img src="readme/wave/403.png">
+<img src="readme/wave/404.png">
+<img src="readme/wave/500.png">
+
+</details>
 ##### Back to [top](#table-of-contents)
 
 <hr>
