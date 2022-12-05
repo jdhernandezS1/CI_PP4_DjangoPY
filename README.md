@@ -9,6 +9,7 @@ pw : 123prove321
 
 <img src="readme/doc/responsive.png">
 
+<hr>
 
 ## Table of Contents
   - [About](#about)
@@ -35,6 +36,7 @@ pw : 123prove321
   - [Configuration](#configuration)
   - [Credits](#credits)
   - [Acknowledgements](#acknowledgements)
+<hr>
 
 ### About
 
@@ -42,6 +44,7 @@ Veg community is a community website where the users can get a weekly planner an
 - With two types of accounts
     - An administrator user account
     - A normal user account
+<hr>
 
 ### User Goals
 
@@ -50,6 +53,7 @@ Veg community is a community website where the users can get a weekly planner an
 - See the Foro at any time
 - Be able to Comment the posts
 
+<hr>
 
 ### Site Owner Goals
 
@@ -57,8 +61,10 @@ Veg community is a community website where the users can get a weekly planner an
 - Furnish an online solution for users to plan their weekly meals.
 - Produce visually attractive design
 - Provide full responsive application with comfortable navigation
+<hr>
 
 ## User Experience
+<hr>
 
 ### Target Audience
 
@@ -66,6 +72,7 @@ Veg community is a community website where the users can get a weekly planner an
 - Vegetarian enthusiasts who wish to be part of a community.
 - People who desire to keep track of their meals.
 - people who require to follow a meal planer
+<hr>
 
 ### User Requirements and Expectations
 
@@ -81,6 +88,7 @@ Veg community is a community website where the users can get a weekly planner an
 
 
 ## User Stories
+<hr>
 
 ### Users
 
@@ -96,6 +104,7 @@ Like user I want to:
 8.  Delete items from my current plans at any point.
 9.  Interact with the community.
 10. Log in to the app to use the different services
+<hr>
 
 ### Site Owner
 
@@ -105,13 +114,14 @@ As a site Owner, I want:
 12. Only the logged-in users to be able to create their plans.
 13. Users to be able to manage their plan like needed.
 14. Database entry to be validated on sign-up page.
-15. user to come to a 404 error page for a URL that does not exist.
-16. users be able to get in contact by our networks.
+15. User to come to a error page for a URL that does not exist.
+16. Users be able to get in contact by our networks.
 17. The site is responsive.
 
 
 ##### Back to [top](#table-of-contents)
 
+<hr>
 
 ## Design
 
@@ -134,16 +144,14 @@ Constituted by a combination of three colors to realize a fluent UX design
 <details><summary>Color Picker</summary>
 <img src="readme/details/picker.png">
 </details>
+<hr>
 
 ### Fonts
 
 ROBOTO Font from GOOGLE. The most used on the majority of data flow.
+<hr>
 
 ### Structure
-
-
-
-
 
 #### Website pages
 
@@ -165,6 +173,7 @@ Following the principles of UXD (user experience design), the website structure 
   - Login page to log in user on the website.
   - Logout page to log out user of the website.
   - 404 error page.
+<hr>
 
 #### Database
 
@@ -177,37 +186,43 @@ The following models represent the database model structure of the website:
 <img src="readme/database/data_base.png">
 </details>
 
+<hr>
 
 ##### User Model
 - The User model is part of the Django allauth library and was represented as hypothetical.
+<hr>
 
 ##### Post Model
 - The Post model contains the fields: title, slug, author, updated_on , content, featured_image, exerpt, created_on, status, likes
 - The model has a one-to-one relationship with User
 - The image field contains the Blog image.
-
+<hr>
 
 ##### Comment Model
 
 - The Comment model contains the fields: post , name, email, body, created_on, approved.
 - The model has a one-to-one relationship with Post
+<hr>
 
 ##### Week Model
 - The Week model contains the following fields:  weeknumber, status, title, slug, period, created_on, featured_image.
 - The model has a one-to-one relationship with User
 - The Week model was designed to grow the planner in a future to develop a monthly planer.
 
+<hr>
 
 ##### Day Model
 
 - The Day model contains the following fields: week_owner. title, slugday, day_name, phrase, featured_image, status.
 - The model has a one-to-one relationship with Week.
+<hr>
 
 ##### Meal Model
 - The model contains the following fields: owner, day, title, slugmeal, meal_description, featured_image, created_on.
 - The model has a one-to-one relationship with User
 - The Meal model contains the body type category for an exercise
 
+<hr>
 
 ### Wireframes
 
@@ -219,8 +234,10 @@ The following models represent the database model structure of the website:
 </details>
 
 ##### Back to [top](#table-of-contents)
+<hr>
 
 ## Technologies Used
+<hr>
 
 ### Languages & Frameworks
 
@@ -232,6 +249,7 @@ The following models represent the database model structure of the website:
 - Django
 - giref==3.5.2
 
+<hr>
 
 ### Libraries & Tools
 
@@ -273,8 +291,10 @@ The following models represent the database model structure of the website:
 
 ##### Back to [top](#table-of-contents)
 
+<hr>
 
 ## Features
+<hr>
 
 ### Navigation Bar
 
@@ -293,6 +313,7 @@ The following models represent the database model structure of the website:
 
 </details>
 
+<hr>
 
 ### Home page
 
@@ -304,6 +325,7 @@ The following models represent the database model structure of the website:
 <img src="readme/design/homepg.png">
 </details>
 
+<hr>
 
 ### Footer
 - A footer is displayed at the base template, it will be shown at bottom in each page
@@ -314,6 +336,7 @@ The following models represent the database model structure of the website:
 <img src="readme/design/footerpg.png">
 </details>
 
+<hr>
 
 ### Sign up / Register
 
@@ -325,6 +348,7 @@ The following models represent the database model structure of the website:
 <img src="readme/design/signup.png">
 </details>
 
+<hr>
 
 ### Login
 
@@ -338,6 +362,7 @@ The following models represent the database model structure of the website:
 <img src="readme/userstories/10login.png">
 </details>
 
+<hr>
 
 ### Sign Out
 - Confirmation screen for Logged in user to logout from their account 
@@ -347,6 +372,7 @@ The following models represent the database model structure of the website:
 <img src="readme/userstories/10signout.png">
 <img src="readme/userstories/10signoutnot.png">
 </details>
+<hr>
 
 ### Planner page
 
@@ -360,6 +386,7 @@ The following models represent the database model structure of the website:
 
 </details>
 
+<hr>
 
 ### Add meal in the plan
 
@@ -374,6 +401,7 @@ The following models represent the database model structure of the website:
 
 </details>
 
+<hr>
 
 ### Delete meals in the plans
 
@@ -385,6 +413,7 @@ The following models represent the database model structure of the website:
 <img src="readme/feature/feature_delete.png">
 </details>
 
+<hr>
 
 ### Edit plan
 - User can edit a selected day diet
@@ -399,6 +428,7 @@ The following models represent the database model structure of the website:
 
 </details>
 
+<hr>
 
 ### Foro page
 
@@ -412,6 +442,7 @@ The following models represent the database model structure of the website:
 
 </details>
 
+<hr>
 
 ### Articles detail page
 
@@ -424,6 +455,7 @@ The following models represent the database model structure of the website:
 <img src="readme/feature/feature_articledet.png">
 </details>
 
+<hr>
 
 ### Comment form
 
@@ -435,18 +467,25 @@ The following models represent the database model structure of the website:
 <img src="readme/feature/feature_comform.png">
 
 </details>
+<hr>
 
 ### Error pages
 
-- If a user go to unexist link the error page will displayed 404
+- If the user has no premises to access, the 403-page will show
+- If a user goes to no exist link, the error page will display 404
+- If the user fills a form wrong,  will display error-500 page
 - User stories covered: 15, 17
 
 <details><summary>Error page</summary>
 
 <img src="readme/feature/feature_error.png">
+<img src="readme/userstories/15e500.png">
+<img src="readme/userstories/15e403.png">
+
 </details>
 
 ##### Back to [top](#table-of-contents)
+<hr>
 
 ## Validation
 
@@ -478,6 +517,7 @@ The W3C Markup Validation Service was used to validate the HTML of the website.
 <details><summary>Sign Up</summary>
 <img src="readme/w3htlm/signup.png">
 </details>
+<hr>
 
 ### CSS Validation
 
@@ -486,6 +526,7 @@ The W3C Jigsaw CSS Validator Service validate the CSS of the website, it passed 
 <details><summary>W3C jigsaw </summary>
 <img src="readme/validation/cssvalidator.png">
 </details>
+<hr>
 
 ### JavaScript Validation
 
@@ -494,6 +535,7 @@ JSHint Service was used to validate the Javascript files without errors.
 <details><summary> JSHint</summary>
 <img src="readme/validation/jsvalidator.png">
 </details>
+<hr>
 
 ### Python Validation
 
@@ -570,11 +612,13 @@ three other tools and combines their results: pep8 for checking style. pyflakes 
 
 </details>
 
+<hr>
 
 ### Chrome Dev Tools Lighthouse
 
 Lighthouse was used to test the performance, accessibility, best practice and SEO of the site.
 Overall the results are very good for the 4 values.
+<hr>
 
 #### Desktop
 <details><summary>View results</summary>
@@ -601,6 +645,8 @@ Overall the results are very good for the 4 values.
 
 </details>
 
+<hr>
+
 #### Mobile
 <details><summary>View results</summary>
 
@@ -626,6 +672,7 @@ Overall the results are very good for the 4 values.
 
 </details>
 </details>
+<hr>
 
 ### Wave
 The WAVE WebAIM web accessibility evaluation tool was used to test the websites accessibility.
@@ -666,12 +713,14 @@ The WAVE WebAIM web accessibility evaluation tool was used to test the websites 
 
 ##### Back to [top](#table-of-contents)
 
+<hr>
 
 ## Testing
 
 The testing approach is as follows:
 1. Manual testing of user stories
 2. Automated testing
+<hr>
 
 ### Manual testing of user stories
 
@@ -823,14 +872,20 @@ Navigate to https://djangoapp4.herokuapp.com/accounts/signup/| Get the Sign Up n
 <img src="readme/userstories/14validated.png">
 </details>
 
-15. user to come to a 404 error page for a URL that does not exist.
+15. user to come to a error page for a URL that does not exist.
 
 **Step** | **Expected Result** | **Actual Result**
 ------------ | ------------ | ------------ |
 Navigate to Wrong url inside the page | 404 page error Load | Works as expected |
+Navigate in a page without have the permit| 403 page error Load | Works as expected |
+Fill and submit wrong a form | 500 page error Load | Works as expected |
 
-<details><summary>404 Error page</summary>
+
+<details><summary>Error pages</summary>
+
+<img src="readme/userstories/15e403.png">
 <img src="readme/userstories/15e404.png">
+<img src="readme/userstories/15e500.png">
 </details>
 
 16. users be able to get in contact by our networks.
@@ -853,6 +908,7 @@ Navigate to pages | Responsive in different screens size | Works as expected |
 <img src="readme/userstories/17responsiv.png">
 <img src="readme/userstories/17responsive.png">
 </details>
+<hr>
 
 ### Automated testing
 
@@ -862,6 +918,7 @@ Automated testing was done using the Django's unit tests from a Python standard 
 <img src="readme/unittest/test.png">
 </details>
 
+<hr>
 
 ### Performing tests on various devices
 
@@ -871,6 +928,7 @@ The website was tested on the following devices:
 - Lenovo legion (Big Screen)
 - Samsung Galaxy Tab A (Medium screen)
 - Hawei p40 (Small screen)
+<hr>
 
 ### Browser compatibility
 
@@ -880,6 +938,7 @@ The website was tested on the following devices:
 
 ##### Back to [top](#table-of-contents)
 
+<hr>
 
 ## Bugs
 
@@ -891,11 +950,14 @@ The website was tested on the following devices:
 
 ##### Back to [top](#table-of-contents)
 
+<hr>
 
 ## Configuration
+<hr>
 
 ### Deploy Application 
 
+<hr>
 
 #### Create a Database
 
@@ -913,6 +975,7 @@ The website was tested on the following devices:
   <details><summary>Get Database URL</summary>
   <img src="readme/deployment/sql5.png">
   </details>
+<hr>
 
 #### Cloudinary
 
@@ -920,6 +983,8 @@ Create a cloudinary Acount and get the environment Url
   <details><summary>Get Cloudinary environment variable</summary>
   <img src="readme/deployment/cloudinary.png">
   </details>
+
+<hr>
 
 #### Config Django App
 
@@ -930,6 +995,7 @@ Create a cloudinary Acount and get the environment Url
 - collect statics in Django project.
 - Generate requirements by freeze command.
 
+<hr>
 
 #### Heroku Deployment
 
@@ -950,13 +1016,16 @@ Create a cloudinary Acount and get the environment Url
 8. Await the app's construction. When everything is deployed, you will see the message "App was successfully deployed" and a "View" button that will lead you to your deployed link.
   - <details><summary>Deploy branch</summary> <img src="readme/deployment/hdeploy.png"> </details>
 
+<hr>
 
 ### Forking the GitHub Repository
 
 1. Go to the GitHub repository https://github.com/jdhernandezS1/CI_PP4_DjangoPY
 2. Click on Fork button in top right corner
 3. You will then have a copy of the repository in your own GitHub account.
-   
+
+<hr>
+
 ### Clone the GitHub Repository
 
 To clone the repository:
@@ -973,6 +1042,7 @@ Online view [link_to_page](https://ci-pp3-lib.herokuapp.com/)
 
 ##### Back to [top](#table-of-contents)
 
+<hr>
 
 ## Credits
 
@@ -983,6 +1053,7 @@ Online view [link_to_page](https://ci-pp3-lib.herokuapp.com/)
 - herokuapp
 - GitHub
 
+<hr>
 
 ### Images
 
@@ -993,11 +1064,15 @@ Images Sources:
 
 
 ##### Back to [top](#table-of-contents)
+<hr>
 
 ## __License__
 
 - CI_PP4_DjangoPY is an open source project by [CI_PP4_DjangoPY](https://github.com/jdhernandezS1/CI_PP4_DjangoPY) that is licensed under [OPS](https://opensource.org/).
 - CI_PP4_DjangoPY reserves the right to change the license of future releases.
+
+<hr>
+
 ## Acknowledgements
 
 Cordially thanks to: 
