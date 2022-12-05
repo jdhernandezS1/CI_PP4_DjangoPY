@@ -3,11 +3,11 @@ Imports
 """
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 3rd party:
-from django.shortcuts import render, get_list_or_404  # reverse
+from django.shortcuts import render, get_list_or_404
 from django.shortcuts import get_object_or_404, redirect
-from django.views import generic  # View
-# from django.http import HttpResponseRedirect
+from django.views import generic
 from django.contrib import messages
+from django.core.exceptions import ValidationError
 # Internal
 from .models import Week, Day, Meal
 from .forms import MealForm
@@ -71,6 +71,9 @@ class Meals(generic.ListView):
             meals.save()
         else:
             meal_form = MealForm()
+            raise ValidationError(
+                    "The Content is not valid"
+                )
         messages.success(request, 'Meal Was created as well')
         return redirect("planer")
 
@@ -125,6 +128,9 @@ class EdMeal(generic.ListView):
             meals.save()
             messages.success(request, 'Meal Was Edited as well')
         else:
+            raise ValidationError(
+                    "The Content is not valid"
+                )
             messages.success(
                 request,
                 'Please Check the fields was filled as well'

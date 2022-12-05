@@ -34,7 +34,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 DEBUG = False
 if os.path.isfile('env.py'):
     import env
-    DEBUG = os.environ.get('FLAG')
+    # DEBUG = os.environ.get('FLAG')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
