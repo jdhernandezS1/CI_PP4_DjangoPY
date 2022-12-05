@@ -517,6 +517,11 @@ The W3C Markup Validation Service was used to validate the HTML of the website.
 <details><summary>Sign Up</summary>
 <img src="readme/w3htlm/signup.png">
 </details>
+
+<details><summary>Error page</summary>
+<img src="readme/w3htlm/errorpage.png">
+</details>
+
 <hr>
 
 ### CSS Validation
