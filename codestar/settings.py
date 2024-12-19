@@ -41,7 +41,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = [SERVER, '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
