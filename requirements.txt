@@ -1,5 +1,6 @@
 asgiref==3.5.2
 bleach==6.2.0
+Brotli==1.1.0
 certifi==2024.12.14
 cffi==1.17.1
 charset-normalizer==3.4.0
@@ -32,3 +33,4 @@ types-cryptography==3.3.23
 urllib3==1.26.20
 uvicorn==0.34.0
 webencodings==0.5.1
+whitenoise==6.8.2
